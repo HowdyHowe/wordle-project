@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  background-color: white;
+  color: #0e0e0e;
+}
+
+.test {
+  @apply flex items-center justify-center w-[75px] h-[75px] border-2 border-[#858585] bg-[#d1d1d1] text-2xl font-serif rounded-xl
+}
+
+.test-active {
+  @apply flex items-center justify-center w-[75px] h-[75px] border-2 border-[#0e0e0e] bg-[#d1d1d1] text-2xl font-serif rounded-2xl
+}
