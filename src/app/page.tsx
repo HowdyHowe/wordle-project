@@ -6,47 +6,52 @@ import { useEffect, useRef, useState } from "react";
 export default function MainPage() {
     const [ guess, setGuess ] = useState<string[]>([])
     const [ turn, setTurn ] = useState("1")
+    const word = "CEPAT".split("");
     const maxWords = 4;
-    const word = "CEPAT"
+
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
-            // Only capture printable keys (optional)
             setGuess(prev => {
                 if (e.key === "Backspace") {
-                    // Remove last letter
                     return prev.slice(0, -1);
                 }
-                if (e.key === "Enter" && guess.length == maxWords) {
-                    for (let x of guess) {
-                        for (let i of word) {
-                            continue;
+
+                if (e.key === "Enter") {
+                    const g = guess.map(e => e.toUpperCase())
+                    for (let i = 0; i < g.length; i++) {
+                        if (g[i] === word[i]) {
+                            console.log(`✅ ${g[i]} correct at index ${i}`);
+                        } else if (word.includes(g[i])) {
+                            console.log(`🟡 ${g[i]} exists but wrong place`);
+                        } else {
+                            console.log(`❌ ${g[i]} not in word`);
                         }
                     }
+
+                    setTimeout(() => setGuess([]), 0);
+                    return prev;
                 }
-                if (guess.length <= maxWords && turn != "stop") {
+
+                if (prev.length <= maxWords && turn != "stop") {
                     if (e.key.length === 1) {
-                        // Add new letter
                         return [...prev, e.key];
                     }
                 }
-                return prev; // ignore other keys
+                return prev;
             })
         };
 
-        // Listen globally
         window.addEventListener("keydown", handleKeyDown);
 
-        // No actual focus needed — it listens all the time
         return () => {
             window.removeEventListener("keydown", handleKeyDown);
         };
-    }, [guess, guess.length, turn]);
+    }, [guess, guess.length, turn, word]);
 
     return (
         <main className="flex flex-col items-center justify-center w-full h-screen">
             <Navbar/>
-            <h1>{guess.join("")}</h1>
             <div className="grid grid-rows-4 gap-[6px]">
                 <div className="grid grid-cols-5 gap-[6px]">
                     <div className={(guess.length >= 1 && turn == "1") ? `test-active animate-pop`: `test`}>{turn == "1" ? guess[0] : ""}</div>
