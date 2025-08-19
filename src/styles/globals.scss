@@ -8,9 +8,9 @@ html {
 }
 
 .test {
-  @apply flex items-center justify-center w-[75px] h-[75px] border-2 border-[#858585] bg-[#d1d1d1] text-2xl font-serif rounded-xl
+  @apply flex items-center justify-center w-[60px] h-[60px] border-2 border-[#9e9999] uppercase bg-white text-2xl font-serif rounded-md
 }
 
 .test-active {
-  @apply flex items-center justify-center w-[75px] h-[75px] border-2 border-[#0e0e0e] bg-[#d1d1d1] text-2xl font-serif rounded-2xl
+  @apply flex items-center justify-center w-[60px] h-[60px] border-[3px] border-[#9e6e6e] uppercase bg-white text-2xl font-serif rounded-md
 }
