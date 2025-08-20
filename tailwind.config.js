@@ -17,9 +17,15 @@ module.exports = {
           "50%": { transform: "scale(1.05)" },
           "100%": { transform: "scale(1)" },
         },
+        flip: {
+          "0%": { opacity: "-0.2", transform: "rotateX(0deg)" },
+          "50%": { opacity: "0.5", transform: "rotateX(90deg)" },
+          "100%": { opacity: "1", transform: "rotateX(0deg)" },
+        },
       },
       animation: {
         pop: "pop 0.25s ease-in-out forwards",
+        flip: "flip 0.8s ease-in-out forwards",
       },
     },
   },
