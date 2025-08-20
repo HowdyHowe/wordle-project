@@ -1,13 +1,30 @@
 "use client";
 
+// O = Correct, I = Semi Correct, X = Wrong
+
 import Navbar from "@/components/navbar";
 import { useEffect, useRef, useState } from "react";
 
+type LetterData = {
+  letter: string;
+  status: "O" | "I" | "X";
+};
+
+const data: Record<number, LetterData[]> = {};
+
 export default function MainPage() {
-    const [ guess, setGuess ] = useState<string[]>([])
-    const [ turn, setTurn ] = useState("1")
+    const [ guess, setGuess ] = useState<string[]>([]);
+    const [ done, setDone ] = useState({
+        line1: false,
+        line2: false,
+        line3: false,
+        line4: false,
+        line5: false,
+        line6: false
+    });
+    const [ turn, setTurn ] = useState(1);
     const word = "CEPAT".split("");
-    const maxWords = 4;
+    const maxWords = 5;
 
 
     useEffect(() => {
@@ -19,13 +36,19 @@ export default function MainPage() {
 
                 if (e.key === "Enter") {
                     const g = guess.map(e => e.toUpperCase())
-                    for (let i = 0; i < g.length; i++) {
-                        if (g[i] === word[i]) {
-                            console.log(`✅ ${g[i]} correct at index ${i}`);
-                        } else if (word.includes(g[i])) {
-                            console.log(`🟡 ${g[i]} exists but wrong place`);
-                        } else {
-                            console.log(`❌ ${g[i]} not in word`);
+                    if (g.length == (maxWords)) {
+                        data[turn] = [];
+                        for (let i = 0; i < g.length; i++) {
+                            if (g[i] === word[i]) {
+                                data[turn].push({letter: g[i], status: "O"})
+
+                            } else if (word.includes(g[i])) {
+                                data[turn].push({letter: g[i], status: "I"})
+
+                            } else {
+                                data[turn].push({letter: g[i], status: "X"})
+
+                            }
                         }
                     }
 
@@ -33,7 +56,7 @@ export default function MainPage() {
                     return prev;
                 }
 
-                if (prev.length <= maxWords && turn != "stop") {
+                if (prev.length <= maxWords && turn != 0) {
                     if (e.key.length === 1) {
                         return [...prev, e.key];
                     }
@@ -52,48 +75,61 @@ export default function MainPage() {
     return (
         <main className="flex flex-col items-center justify-center w-full h-screen">
             <Navbar/>
+            <h1>{JSON.stringify(data)}</h1>
             <div className="grid grid-rows-4 gap-[6px]">
                 <div className="grid grid-cols-5 gap-[6px]">
-                    <div className={(guess.length >= 1 && turn == "1") ? `test-active animate-pop`: `test`}>{turn == "1" ? guess[0] : ""}</div>
-                    <div className={(guess.length >= 2 && turn == "1") ? `test-active animate-pop`: `test`}>{turn == "1" ? guess[1] : ""}</div>
-                    <div className={(guess.length >= 3 && turn == "1") ? `test-active animate-pop`: `test`}>{turn == "1" ? guess[2] : ""}</div>
-                    <div className={(guess.length >= 4 && turn == "1") ? `test-active animate-pop`: `test`}>{turn == "1" ? guess[3] : ""}</div>
-                    <div className={(guess.length == 5 && turn == "1") ? `test-active animate-pop`: `test`}>{turn == "1" ? guess[4] : ""}</div>
+                    {
+                        Array.from({ length:maxWords}).map((_, i) => (
+                            <div key={i} className={(guess.length > i && turn == 1) ? `test-active animate-pop`: `test`}>
+                                {turn == 1 ? guess[i] : ""}
+                            </div>
+                        ))
+                    }
                 </div>
                 <div className="grid grid-cols-5 gap-[6px]">
-                    <div className={(guess.length >= 1 && turn == "2") ? `test-active animate-pop`: `test`}>{turn == "2" ? guess[0] : ""}</div>
-                    <div className={(guess.length >= 2 && turn == "2") ? `test-active animate-pop`: `test`}>{turn == "2" ? guess[1] : ""}</div>
-                    <div className={(guess.length >= 3 && turn == "2") ? `test-active animate-pop`: `test`}>{turn == "2" ? guess[2] : ""}</div>
-                    <div className={(guess.length >= 4 && turn == "2") ? `test-active animate-pop`: `test`}>{turn == "2" ? guess[3] : ""}</div>
-                    <div className={(guess.length == 5 && turn == "2") ? `test-active animate-pop`: `test`}>{turn == "2" ? guess[4] : ""}</div>
+                    {
+                        Array.from({ length:maxWords}).map((_, i) => (
+                            <div key={i} className={(guess.length > i && turn == 2) ? `test-active animate-pop`: `test`}>
+                                {turn == 2 ? guess[0] : ""}
+                            </div>
+                        ))
+                    }
                 </div>
                 <div className="grid grid-cols-5 gap-[6px]">
-                    <div className={(guess.length >= 1 && turn == "3") ? `test-active animate-pop`: `test`}>{turn == "3" ? guess[0] : ""}</div>
-                    <div className={(guess.length >= 2 && turn == "3") ? `test-active animate-pop`: `test`}>{turn == "3" ? guess[1] : ""}</div>
-                    <div className={(guess.length >= 3 && turn == "3") ? `test-active animate-pop`: `test`}>{turn == "3" ? guess[2] : ""}</div>
-                    <div className={(guess.length >= 4 && turn == "3") ? `test-active animate-pop`: `test`}>{turn == "3" ? guess[3] : ""}</div>
-                    <div className={(guess.length == 5 && turn == "3") ? `test-active animate-pop`: `test`}>{turn == "3" ? guess[4] : ""}</div>
+                    {
+                        Array.from({ length:maxWords}).map((_, i) => (
+                            <div key={i} className={(guess.length > i && turn == 3) ? `test-active animate-pop`: `test`}>
+                                {turn == 3 ? guess[i] : ""}
+                            </div>
+                        ))
+                    }
                 </div>
                 <div className="grid grid-cols-5 gap-[6px]">
-                    <div className={(guess.length >= 1 && turn == "4") ? `test-active animate-pop`: `test`}>{turn == "4" ? guess[0] : ""}</div>
-                    <div className={(guess.length >= 2 && turn == "4") ? `test-active animate-pop`: `test`}>{turn == "4" ? guess[1] : ""}</div>
-                    <div className={(guess.length >= 3 && turn == "4") ? `test-active animate-pop`: `test`}>{turn == "4" ? guess[2] : ""}</div>
-                    <div className={(guess.length >= 4 && turn == "4") ? `test-active animate-pop`: `test`}>{turn == "4" ? guess[3] : ""}</div>
-                    <div className={(guess.length == 5 && turn == "4") ? `test-active animate-pop`: `test`}>{turn == "4" ? guess[4] : ""}</div>
+                    {
+                        Array.from({ length:maxWords}).map((_, i) => (
+                            <div key={i} className={(guess.length > i && turn == 4) ? `test-active animate-pop`: `test`}>
+                                {turn == 4 ? guess[i] : ""}
+                            </div>
+                        ))
+                    }
                 </div>
                 <div className="grid grid-cols-5 gap-[6px]">
-                    <div className={(guess.length >= 1 && turn == "5") ? `test-active animate-pop`: `test`}>{turn == "5" ? guess[0] : ""}</div>
-                    <div className={(guess.length >= 2 && turn == "5") ? `test-active animate-pop`: `test`}>{turn == "5" ? guess[1] : ""}</div>
-                    <div className={(guess.length >= 3 && turn == "5") ? `test-active animate-pop`: `test`}>{turn == "5" ? guess[2] : ""}</div>
-                    <div className={(guess.length >= 4 && turn == "5") ? `test-active animate-pop`: `test`}>{turn == "5" ? guess[3] : ""}</div>
-                    <div className={(guess.length == 5 && turn == "5") ? `test-active animate-pop`: `test`}>{turn == "5" ? guess[4] : ""}</div>
+                    {
+                        Array.from({ length:maxWords}).map((_, i) => (
+                            <div key={i} className={(guess.length > i && turn == 5) ? `test-active animate-pop`: `test`}>
+                                {turn == 5 ? guess[i] : ""}
+                            </div>
+                        ))
+                    }
                 </div>
                 <div className="grid grid-cols-5 gap-[6px]">
-                    <div className={(guess.length >= 1 && turn == "6") ? `test-active animate-pop`: `test`}>{turn == "6" ? guess[0] : ""}</div>
-                    <div className={(guess.length >= 2 && turn == "6") ? `test-active animate-pop`: `test`}>{turn == "6" ? guess[1] : ""}</div>
-                    <div className={(guess.length >= 3 && turn == "6") ? `test-active animate-pop`: `test`}>{turn == "6" ? guess[2] : ""}</div>
-                    <div className={(guess.length >= 4 && turn == "6") ? `test-active animate-pop`: `test`}>{turn == "6" ? guess[3] : ""}</div>
-                    <div className={(guess.length == 5 && turn == "6") ? `test-active animate-pop`: `test`}>{turn == "6" ? guess[4] : ""}</div>
+                    {
+                        Array.from({ length:maxWords}).map((_, i) => (
+                            <div key={i} className={(guess.length > i && turn == 6) ? `test-active animate-pop`: `test`}>
+                                {turn == 6 ? guess[i] : ""}
+                            </div>
+                        ))
+                    }
                 </div>
             </div>
 
