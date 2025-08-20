@@ -1,5 +1,6 @@
 "use client";
 
+import Keyboard from "@/components/keyboard";
 // O = Correct, I = Semi Correct, X = Wrong
 
 import Navbar from "@/components/navbar";
@@ -30,6 +31,14 @@ export default function MainPage() {
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
             setGuess(prev => {
+                if (turn === 0) {
+                    return prev;
+                }
+
+                if (turn > 6) {
+                    setTurn(0);
+                }
+
                 if (e.key === "Backspace" && turn != 0) {
                     return prev.slice(0, -1);
                 }
@@ -39,14 +48,14 @@ export default function MainPage() {
                     if (/^[a-zA-Z]$/.test(e.key)) {
                         return [...prev, e.key.toUpperCase()];
                     } else {
-                        return prev
+                        return prev;
                     }
                 }
 
                 if (e.key === "Enter" && turn != 0) {
-                    const g = guess.map(e => e.toUpperCase())
-                    const setWord = word.split("")
-                    data[turn] = []
+                    const g = guess.map(e => e.toUpperCase());
+                    const setWord = word.split("");
+                    data[turn] = [];
 
                     for (let i = 0; i < g.length; i++) {
                         data[turn].push({letter: g[i], status: "X"});
@@ -57,7 +66,7 @@ export default function MainPage() {
                         for (let i = 0; i < g.length; i++) {
                             if (g[i] === word[i]) {
                                 data[turn][i].status = "O";
-                                setWord[i] = ""
+                                setWord[i] = "";
                             }
                         }
 
@@ -72,7 +81,7 @@ export default function MainPage() {
                                         setWord.splice(index, 1);
                                     }
 
-                                    console.log(setWord)
+                                    console.log(setWord);
                                 }
                             }
                         }
@@ -103,10 +112,10 @@ export default function MainPage() {
     }, [guess, guess.length, turn, word]);
 
     return (
-        <main className="flex flex-col items-center justify-start mt-[100px] w-full h-screen">
+        <main className="flex flex-col items-center justify-start mt-[100px] w-full h-screen font-mono">
             <Navbar/>
             {/* <h1>{JSON.stringify(data)}</h1> */}
-            <div className="grid grid-rows-4 gap-[6px]">
+            <div className="grid grid-rows-4 gap-[6px] mb-10 font-bold">
                 <div className="grid grid-cols-5 gap-[6px]">
                     {
                         Array.from({ length:maxWords}).map((_, i) => (
@@ -216,6 +225,8 @@ export default function MainPage() {
                     }
                 </div>
             </div>
+
+            <Keyboard/>
 
         </main>
     )

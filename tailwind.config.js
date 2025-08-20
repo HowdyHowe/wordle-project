@@ -10,7 +10,9 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: {},
+      fontFamily: {
+        rubik: ["Rubik"],
+      },
       keyframes: {
         pop: {
           "0%": { transform: "scale(1)" },

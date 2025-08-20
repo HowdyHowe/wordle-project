@@ -3,10 +3,13 @@
 @tailwind utilities;
 
 html {
-  background-color: white;
-  color: #0e0e0e;
+  // background-color: white;
+  // color: #0e0e0e;
+  @apply bg-white text-[#0e0e0e]
 }
 
+
+// box
 .test {
   @apply flex items-center justify-center w-[60px] h-[60px] border-2 border-[#dddddd] uppercase bg-white text-2xl rounded-md
 }
@@ -15,6 +18,7 @@ html {
   @apply flex items-center justify-center w-[60px] h-[60px] border-[3px] border-[#bdbdbd] uppercase bg-white text-2xl rounded-md animate-pop
 }
 
+// box status
 .box-incorrect {
   @apply flex items-center justify-center w-[60px] h-[60px] bg-[#d1d1d1] text-white text-2xl rounded-md animate-flip
 }
@@ -25,4 +29,9 @@ html {
 
 .box-correct {
   @apply flex items-center justify-center w-[60px] h-[60px] bg-[#2eb812] text-white text-2xl rounded-md animate-flip
+}
+
+// keyboard
+.keyboard-key {
+  @apply flex items-center justify-center h-[50px] pb-1 text-2xl rounded-md bg-slate-400
 }
