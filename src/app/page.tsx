@@ -23,7 +23,7 @@ export default function MainPage() {
         line6: false
     });
     const [ turn, setTurn ] = useState(1);
-    const word = "CEPAT".split("");
+    const word = "CEPAT"
     const maxWords = 5;
 
 
@@ -45,18 +45,35 @@ export default function MainPage() {
 
                 if (e.key === "Enter" && turn != 0) {
                     const g = guess.map(e => e.toUpperCase())
+                    const setWord = word.split("")
+                    data[turn] = []
+
+                    for (let i = 0; i < g.length; i++) {
+                        data[turn].push({letter: g[i], status: "X"});
+                    }
+
                     if (g.length == (maxWords)) {
-                        data[turn] = [];
+                         // 2. Exact matches
                         for (let i = 0; i < g.length; i++) {
                             if (g[i] === word[i]) {
-                                data[turn].push({letter: g[i], status: "O"})
+                                data[turn][i].status = "O";
+                                setWord[i] = ""
+                            }
+                        }
 
-                            } else if (word.includes(g[i])) {
-                                data[turn].push({letter: g[i], status: "I"})
+                        // 3. Semi matches
+                        for (let i = 0; i < g.length; i++) {
+                            if (data[turn][i].status === "X") {
+                                if (setWord.includes(g[i])) {
+                                    data[turn][i].status = "I";
+                                    const index = setWord.indexOf("A");
 
-                            } else {
-                                data[turn].push({letter: g[i], status: "X"})
+                                    if (index !== -1) {
+                                        setWord.splice(index, 1);
+                                    }
 
+                                    console.log(setWord)
+                                }
                             }
                         }
                     } else {
@@ -86,9 +103,9 @@ export default function MainPage() {
     }, [guess, guess.length, turn, word]);
 
     return (
-        <main className="flex flex-col items-center justify-center w-full h-screen">
+        <main className="flex flex-col items-center justify-start mt-[100px] w-full h-screen">
             <Navbar/>
-            <h1>{JSON.stringify(data)}</h1>
+            {/* <h1>{JSON.stringify(data)}</h1> */}
             <div className="grid grid-rows-4 gap-[6px]">
                 <div className="grid grid-cols-5 gap-[6px]">
                     {

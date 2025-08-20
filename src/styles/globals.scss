@@ -8,11 +8,11 @@ html {
 }
 
 .test {
-  @apply flex items-center justify-center w-[60px] h-[60px] border-2 border-[#dddddd] uppercase bg-white text-2xl font-serif rounded-md
+  @apply flex items-center justify-center w-[60px] h-[60px] border-2 border-[#dddddd] uppercase bg-white text-2xl rounded-md
 }
 
 .test-active {
-  @apply flex items-center justify-center w-[60px] h-[60px] border-[3px] border-[#6e9e6e] uppercase bg-white text-2xl font-serif rounded-md animate-pop
+  @apply flex items-center justify-center w-[60px] h-[60px] border-[3px] border-[#bdbdbd] uppercase bg-white text-2xl rounded-md animate-pop
 }
 
 .box-incorrect {
@@ -20,9 +20,9 @@ html {
 }
 
 .box-semi-correct {
-  @apply flex items-center justify-center w-[60px] h-[60px] bg-[#e7e753] text-white text-2xl rounded-md animate-flip
+  @apply flex items-center justify-center w-[60px] h-[60px] bg-[#dddd00] text-white text-2xl rounded-md animate-flip
 }
 
 .box-correct {
-  @apply flex items-center justify-center w-[60px] h-[60px] bg-[#d1d] text-white text-2xl rounded-md animate-flip
+  @apply flex items-center justify-center w-[60px] h-[60px] bg-[#2eb812] text-white text-2xl rounded-md animate-flip
 }
