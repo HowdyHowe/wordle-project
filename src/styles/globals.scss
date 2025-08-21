@@ -11,16 +11,16 @@ html {
 
 // box
 .test {
-  @apply flex items-center justify-center w-[60px] h-[60px] border-2 border-[#dddddd] uppercase bg-white text-2xl rounded-md
+  @apply flex items-center justify-center w-[60px] h-[60px] border-2 border-[#d1d1d1] uppercase bg-white text-2xl rounded-md
 }
 
 .test-active {
-  @apply flex items-center justify-center w-[60px] h-[60px] border-[3px] border-[#bdbdbd] uppercase bg-white text-2xl rounded-md animate-pop
+  @apply flex items-center justify-center w-[60px] h-[60px] border-[3px] border-[#b8bbd1] uppercase bg-white text-2xl rounded-md animate-pop
 }
 
 // box status
 .box-incorrect {
-  @apply flex items-center justify-center w-[60px] h-[60px] bg-[#d1d1d1] text-white text-2xl rounded-md
+  @apply flex items-center justify-center w-[60px] h-[60px] bg-[#b6b6b6] text-white text-2xl rounded-md
 }
 
 .box-semi-correct {
@@ -33,5 +33,5 @@ html {
 
 // keyboard
 .keyboard-key {
-  @apply flex items-center justify-center h-[50px] pb-1 text-2xl rounded-md bg-slate-400
+  @apply flex items-center justify-center h-[50px] pb-1 text-2xl rounded-md bg-[#b8bbd1] active:scale-90 active:bg-[#c7c9ff] transition-all duration-100
 }

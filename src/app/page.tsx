@@ -21,7 +21,7 @@ const wordSet = new Set(wordList);
 // const word = filteredWords[Math.floor(Math.random() * filteredWords.length)].toUpperCase();
 // const word = "PINTU";
 
-const data: Record<number, LetterData[]> = {};
+let data: Record<number, LetterData[]> = {};
 
 
 const isValidWord = (guess: string) =>  {
@@ -30,6 +30,8 @@ const isValidWord = (guess: string) =>  {
 
 export default function MainPage() {
     const [ guess, setGuess ] = useState<string[]>([]);
+    const [ turn, setTurn ] = useState(1);
+    const [ win, setWin ] = useState("")
     const [ show, setShow ] = useState(false)
     const [ isWord, setIsWord ] = useState(() => {
         const filteredWords = wordList.filter(w => w.length === maxWords);
@@ -43,35 +45,15 @@ export default function MainPage() {
         line5: false,
         line6: false
     });
-    const [ turn, setTurn ] = useState(1);
-    console.log(isWord)
-
-
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
             setGuess(prev => {
                 if (e.key === "Enter") {
 
-                    if (turn === 0){
-                        setTurn(1);
-                        setDone({
-                            line1: false,
-                            line2: false,
-                            line3: false,
-                            line4: false,
-                            line5: false,
-                            line6: false
-                        });
-                        setGuess([]);
-
-                        const filteredWords = wordList.filter(w => w.length === maxWords);
-                        setIsWord(filteredWords[Math.floor(Math.random() * filteredWords.length)].toUpperCase());
-                        return prev;
-                    }
-
                     const g = guess.map(e => e.toUpperCase());
                     const test = guess.map(e => e.toUpperCase()).join("");
+                    console.log(test);
                     const setWord = isWord.split("");
                     data[turn] = [];
 
@@ -116,12 +98,14 @@ export default function MainPage() {
                         setTimeout(() => setGuess([]), 0);
                         if (data[turn].every(item => item.status === "O")) {
                             setTurn(0)
+                            setWin("win")
                             setShow(true)
                             return prev;
                         }
 
                         if (nextTurn > 6) {
                             setTurn(0)
+                            setWin("lose")
                             setShow(true)
                             return prev;
                         }
@@ -130,10 +114,6 @@ export default function MainPage() {
                         return prev;
                     }
 
-                    return prev;
-                }
-
-                if (turn === 0) {
                     return prev;
                 }
 
@@ -155,6 +135,25 @@ export default function MainPage() {
                         return [...prev, e.key];
                     }
                 }
+
+                if (turn === 0){
+                    data = {};
+                    setGuess([]);
+                    setTurn(1);
+                    setDone({
+                        line1: false,
+                        line2: false,
+                        line3: false,
+                        line4: false,
+                        line5: false,
+                        line6: false
+                    });
+
+                    const filteredWords = wordList.filter(w => w.length === maxWords);
+                    setIsWord(filteredWords[Math.floor(Math.random() * filteredWords.length)].toUpperCase());
+                    return prev;
+                }
+
                 return prev;
             })
         };
@@ -168,10 +167,33 @@ export default function MainPage() {
 
     return (
         <main className="relative flex flex-col items-center justify-start mt-[100px] w-full h-full font-mono">
-            <PopUp show={show} onClose={() => setShow(false)}/>
+            {
+                win == "win" ?
+                <PopUp
+                    show={show}
+                    onClose={
+                        () => {
+                            setShow(false);
+                            setWin("");
+                        }
+                    }
+                    title={"YOU WIN!!"}
+                    message={"You correctly guess the word."}/>:
+
+                win == "lose" ?
+                <PopUp show={show}
+                onClose={
+                    () => {
+                        setShow(false);
+                        setWin("");
+                    }
+                }
+                title={"YOU LOSE!!"}
+                message={"You cannot guess the word with given chance."}/>: ""
+            }
             <Navbar/>
-            {/* <h1>{JSON.stringify(data)}</h1>
-            <h1>{turn}</h1> */}
+            <h1>{JSON.stringify(data)}</h1>
+            <h1>{turn}</h1>
             <div className="grid grid-rows-4 gap-[6px] mb-10 font-bold">
                 <div className="grid grid-cols-5 gap-[6px]">
                     {
@@ -296,23 +318,15 @@ export default function MainPage() {
                 }}
                 onBackspace={() => setGuess(prev => prev.slice(0, -1))}
                 onEnter={() => {
-                    if (turn === 0){
-                        setTurn(1);
-                        setDone({
-                            line1: false,
-                            line2: false,
-                            line3: false,
-                            line4: false,
-                            line5: false,
-                            line6: false
-                        });
-                        setGuess([]);
-                        return;
-                    }
                     if (turn !== 0) {
                         const g = guess.map(e => e.toUpperCase());
+                        const test = guess.map(e => e.toUpperCase()).join("");
                         const setWord = isWord.split("");
                         data[turn] = [];
+
+                        if (!isValidWord(test)) {
+                            return;
+                        }
 
                         for (let i = 0; i < g.length; i++) {
                             data[turn].push({letter: g[i], status: "X"});
@@ -361,6 +375,23 @@ export default function MainPage() {
                                 return;
                             }
                         }
+                    }
+
+                    if (turn === 0){
+                        data = {};
+                        setGuess([]);
+                        setTurn(1);
+                        setDone({
+                            line1: false,
+                            line2: false,
+                            line3: false,
+                            line4: false,
+                            line5: false,
+                            line6: false
+                        });
+                        const filteredWords = wordList.filter(w => w.length === maxWords);
+                        setIsWord(filteredWords[Math.floor(Math.random() * filteredWords.length)].toUpperCase());
+                        return;
                     }
                 }}
             />

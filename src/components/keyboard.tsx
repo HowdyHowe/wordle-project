@@ -51,54 +51,54 @@ export default function Keyboard({ onKeyPress, onBackspace, onEnter }: KeyboardP
             {/* Row 1 */}
             <div className="grid grid-cols-10 gap-2">
                 {"QWERTYUIOP".split("").map((letter) => (
-                    <div
+                    <button
                         key={letter}
                         className="keyboard-key"
                         onClick={() => onKeyPress(letter)}
                     >
                         {letter}
-                    </div>
+                    </button>
                 ))}
             </div>
 
             {/* Row 2 */}
             <div className="grid grid-cols-9 gap-2">
                 {"ASDFGHJKL".split("").map((letter) => (
-                    <div
+                    <button
                         key={letter}
                         className="keyboard-key"
                         onClick={() => onKeyPress(letter)}
                     >
                         {letter}
-                    </div>
+                    </button>
                 ))}
             </div>
 
             {/* Row 3 */}
             <div className="grid grid-cols-11 gap-2">
-                <div
+                <button
                     className="keyboard-key col-span-2"
                     onClick={onBackspace}
                 >
                     Delete
-                </div>
+                </button>
 
                 {"ZXCVBNM".split("").map((letter) => (
-                    <div
+                    <button
                         key={letter}
                         className="keyboard-key"
                         onClick={() => onKeyPress(letter)}
                     >
                         {letter}
-                    </div>
+                    </button>
                 ))}
 
-                <div
+                <button
                     className="keyboard-key col-span-2"
                     onClick={onEnter}
                 >
                     Enter
-                </div>
+                </button>
             </div>
         </div>
     );

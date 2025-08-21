@@ -1,6 +1,11 @@
 
 {
   "kata": [
+    "pelan", "barat", "timur", "putar", "luluh", "huruf", "gurih", "gugur", "bubur", "cukur", "rumus",
+    "balas", "cukup", "balas", "pedas", "tepat", "bebas", "kebas", "bakar", "bambu", "kelam", "bakat",
+    "bilas", "kelas", "angin", "iklan", "beras", "lekas", "bekas", "teras", "cerah", "deras", "badan", "memar", "masak", "pisah", "sudah",
+    "mulai", "silat", "sebar", "kebal", "balik", "kilat", "tajir", "tabur", "tapak", "takar", "tawar", "takar",
+    "celah", "belah", "lapar", "lebah", "rebahan", "kemah", "lepas", "keram", "karam", "rumah", "betah", "geram", "keram", "mekar", "hapus",
     "kemari", "jemari", "pelari", "rumput", "tembok", "minyak",
     "lamar", "nulis", "makan", "harus", "lurus", "rusuh", "mandi", "minum", "lemas", "cemas",
     "tidur", "bangun", "kerja", "sehat", "sakit", "senang", "sedih",
@@ -34,8 +39,8 @@
     "buku", "pensil", "pena", "penghapus", "penggaris", "kertas", "map", "tas", "kotak", "botol",
     "gelas", "piring", "mangkuk", "sendok", "garpu", "pisau", "kompor", "panci", "wajan", "rice",
     "lemari", "meja", "kursi", "tempat", "kasur", "bantal", "selimut", "sprei", "gorden", "lampu",
-    "tv", "radio", "hp", "laptop", "printer", "kamera",
-    "jam", "kunci", "gembok", "pintu", "jendela", "atap", "lantai", "dinding", "kamar", "ruang",
+    "radio", "hp", "laptop", "printer", "kamera",
+    "kunci", "gembok", "pintu", "jendela", "atap", "lantai", "dinding", "kamar", "ruang",
     "baju", "celana", "rok", "kemeja", "kaos", "jaket", "jas", "dress", "blus", "sweater",
     "sepatu", "sandal", "kaus", "celana", "ikat", "topi", "helm", "kacamata", "jam", "gelang",
     "cincin", "kalung", "anting", "bros", "dompet", "tas", "koper", "payung", "sapu", "ember",
