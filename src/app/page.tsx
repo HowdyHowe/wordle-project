@@ -1,24 +1,40 @@
 "use client";
 
-import Flip from "@/components/box-flip";
-import Keyboard from "@/components/keyboard";
 // O = Correct, I = Semi Correct, X = Wrong
-
+import Keyboard from "@/components/keyboard";
 import Navbar from "@/components/navbar";
 import PopUp from "@/components/pop-up";
 import { useEffect, useState } from "react";
+import randomWord from "@/components/data/word-idn.json"
+
 
 type LetterData = {
   letter: string;
   status: "O" | "I" | "X";
 };
 
+const maxWords = 5;
+
+const wordList: string[] = randomWord.kata;
+const wordSet = new Set(wordList);
+// const filteredWords = wordList.filter(w => w.length === maxWords);
+// const word = filteredWords[Math.floor(Math.random() * filteredWords.length)].toUpperCase();
+// const word = "PINTU";
+
 const data: Record<number, LetterData[]> = {};
+
+
+const isValidWord = (guess: string) =>  {
+  return wordSet.has(guess.toLowerCase());
+}
 
 export default function MainPage() {
     const [ guess, setGuess ] = useState<string[]>([]);
-    const [ win, setWin ] = useState(false)
     const [ show, setShow ] = useState(false)
+    const [ isWord, setIsWord ] = useState(() => {
+        const filteredWords = wordList.filter(w => w.length === maxWords);
+        return filteredWords[Math.floor(Math.random() * filteredWords.length)].toUpperCase();
+    });
     const [ done, setDone ] = useState({
         line1: false,
         line2: false,
@@ -28,24 +44,40 @@ export default function MainPage() {
         line6: false
     });
     const [ turn, setTurn ] = useState(1);
-    const word = "CEPAT"
-    const maxWords = 5;
+    console.log(isWord)
+
 
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
             setGuess(prev => {
                 if (e.key === "Enter") {
+
                     if (turn === 0){
                         setTurn(1);
-                        setDone(prev => ({...prev, [`line${turn}`]: true}))
+                        setDone({
+                            line1: false,
+                            line2: false,
+                            line3: false,
+                            line4: false,
+                            line5: false,
+                            line6: false
+                        });
                         setGuess([]);
+
+                        const filteredWords = wordList.filter(w => w.length === maxWords);
+                        setIsWord(filteredWords[Math.floor(Math.random() * filteredWords.length)].toUpperCase());
                         return prev;
                     }
 
                     const g = guess.map(e => e.toUpperCase());
-                    const setWord = word.split("");
+                    const test = guess.map(e => e.toUpperCase()).join("");
+                    const setWord = isWord.split("");
                     data[turn] = [];
+
+                    if (!isValidWord(test)) {
+                        return prev;
+                    }
 
                     for (let i = 0; i < g.length; i++) {
                         data[turn].push({letter: g[i], status: "X"});
@@ -54,7 +86,7 @@ export default function MainPage() {
                     if (g.length == (maxWords)) {
                          // 2. Exact matches
                         for (let i = 0; i < g.length; i++) {
-                            if (g[i] === word[i]) {
+                            if (g[i] === isWord[i]) {
                                 data[turn][i].status = "O";
                                 setWord[i] = "";
                             }
@@ -65,11 +97,12 @@ export default function MainPage() {
                             if (data[turn][i].status === "X") {
                                 if (setWord.includes(g[i])) {
                                     data[turn][i].status = "I";
-                                    const index = setWord.indexOf("A");
+                                    // setWord[g[i]] = "";
+                                    const index = setWord.indexOf(g[i]);
+                                    setWord.splice(index, 1);
 
-                                    if (index !== -1) {
-                                        setWord.splice(index, 1);
-                                    }
+                                    // if (index !== -1) {
+                                    // }
 
                                     console.log(setWord);
                                 }
@@ -131,7 +164,7 @@ export default function MainPage() {
         return () => {
             window.removeEventListener("keydown", handleKeyDown);
         };
-    }, [guess, guess.length, turn, word]);
+    }, [guess, guess.length, isWord, turn]);
 
     return (
         <main className="relative flex flex-col items-center justify-start mt-[100px] w-full h-full font-mono">
@@ -265,10 +298,20 @@ export default function MainPage() {
                 onEnter={() => {
                     if (turn === 0){
                         setTurn(1);
+                        setDone({
+                            line1: false,
+                            line2: false,
+                            line3: false,
+                            line4: false,
+                            line5: false,
+                            line6: false
+                        });
+                        setGuess([]);
+                        return;
                     }
                     if (turn !== 0) {
                         const g = guess.map(e => e.toUpperCase());
-                        const setWord = word.split("");
+                        const setWord = isWord.split("");
                         data[turn] = [];
 
                         for (let i = 0; i < g.length; i++) {
@@ -278,7 +321,7 @@ export default function MainPage() {
                         if (g.length === maxWords) {
                             // 2. Exact matches
                             for (let i = 0; i < g.length; i++) {
-                                if (g[i] === word[i]) {
+                                if (g[i] === isWord[i]) {
                                     data[turn][i].status = "O";
                                     setWord[i] = "";
                                 }
