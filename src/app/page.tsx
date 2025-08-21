@@ -1,9 +1,11 @@
 "use client";
 
+import Flip from "@/components/box-flip";
 import Keyboard from "@/components/keyboard";
 // O = Correct, I = Semi Correct, X = Wrong
 
 import Navbar from "@/components/navbar";
+import PopUp from "@/components/pop-up";
 import { useEffect, useState } from "react";
 
 type LetterData = {
@@ -15,6 +17,8 @@ const data: Record<number, LetterData[]> = {};
 
 export default function MainPage() {
     const [ guess, setGuess ] = useState<string[]>([]);
+    const [ win, setWin ] = useState(false)
+    const [ show, setShow ] = useState(false)
     const [ done, setDone ] = useState({
         line1: false,
         line2: false,
@@ -33,10 +37,6 @@ export default function MainPage() {
             setGuess(prev => {
                 if (turn === 0) {
                     return prev;
-                }
-
-                if (turn > 6) {
-                    setTurn(0);
                 }
 
                 if (e.key === "Backspace" && turn != 0) {
@@ -85,13 +85,29 @@ export default function MainPage() {
                                 }
                             }
                         }
+
+                        setDone(prev => ({...prev, [`line${turn}`]: true}))
+                        setTurn(turn + 1);
+                        const nextTurn = turn + 1
+
+                        setTimeout(() => setGuess([]), 0);
+                        if (data[turn].every(item => item.status === "O")) {
+                            setTurn(0)
+                            setShow(true)
+                            return prev;
+                        }
+
+                        if (nextTurn > 6) {
+                            setTurn(0)
+                            setShow(true)
+                            console.log("kalah ")
+                            return prev;
+                        }
+
                     } else {
                         return prev;
                     }
 
-                    setDone(prev => ({...prev, [`line${turn}`]: true}))
-                    setTurn(turn + 1);
-                    setTimeout(() => setGuess([]), 0);
                     return prev;
                 }
 
@@ -112,9 +128,11 @@ export default function MainPage() {
     }, [guess, guess.length, turn, word]);
 
     return (
-        <main className="flex flex-col items-center justify-start mt-[100px] w-full h-screen font-mono">
+        <main className="relative flex flex-col items-center justify-start mt-[100px] w-full h-full font-mono">
+            <PopUp show={show} onClose={() => setShow(false)}/>
             <Navbar/>
             {/* <h1>{JSON.stringify(data)}</h1> */}
+            <h1>{turn}</h1>
             <div className="grid grid-rows-4 gap-[6px] mb-10 font-bold">
                 <div className="grid grid-cols-5 gap-[6px]">
                     {

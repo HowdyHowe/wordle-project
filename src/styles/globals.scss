@@ -20,15 +20,15 @@ html {
 
 // box status
 .box-incorrect {
-  @apply flex items-center justify-center w-[60px] h-[60px] bg-[#d1d1d1] text-white text-2xl rounded-md animate-flip
+  @apply flex items-center justify-center w-[60px] h-[60px] bg-[#d1d1d1] text-white text-2xl rounded-md
 }
 
 .box-semi-correct {
-  @apply flex items-center justify-center w-[60px] h-[60px] bg-[#dddd00] text-white text-2xl rounded-md animate-flip
+  @apply flex items-center justify-center w-[60px] h-[60px] bg-[#dddd00] text-white text-2xl rounded-md
 }
 
 .box-correct {
-  @apply flex items-center justify-center w-[60px] h-[60px] bg-[#2eb812] text-white text-2xl rounded-md animate-flip
+  @apply flex items-center justify-center w-[60px] h-[60px] bg-[#2eb812] text-white text-2xl rounded-md
 }
 
 // keyboard
