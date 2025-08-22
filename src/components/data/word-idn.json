@@ -1,6 +1,7 @@
 
 {
   "kata": [
+    "kadal", "telan", "demam", "rapot", "lapor", "darat", "dapat", "kadar", "setan", "utara",
     "pelan", "barat", "timur", "putar", "luluh", "huruf", "gurih", "gugur", "bubur", "cukur", "rumus",
     "balas", "cukup", "balas", "pedas", "tepat", "bebas", "kebas", "bakar", "bambu", "kelam", "bakat",
     "bilas", "kelas", "angin", "iklan", "beras", "lekas", "bekas", "teras", "cerah", "deras", "badan", "memar", "masak", "pisah", "sudah",
@@ -58,7 +59,7 @@
     "tanah", "kebun", "sawah", "ladang", "hutan", "gunung", "bukit", "lembah", "jurang",
     "sewa", "kontrak", "beli", "jual", "gadai", "tukar", "pindah", "roboh", "rusak",
     "perbaiki", "cat", "poles", "bersih", "kotor", "rapi", "berantakan", "penuh", "kosong", "padat",
-    "sepi", "ramai", "hening", "bising", "keras", "lembut", "halus", "kasar", "licin", "kesat",
+    "sepi", "hening", "bising", "keras", "lembut", "halus", "kasar", "licin", "kesat",
     "basah", "kering", "lembab", "garing", "segar", "layu", "hidup", "mati", "wafat",
     "sakit", "sehat", "lemah", "kuat", "lelah", "segar", "mengantuk", "terjaga", "mimpi",
     "duduk", "berdiri", "jalan", "lari", "melompat", "terbang", "jatuh", "naik", "turun",
@@ -105,6 +106,6 @@
     "kroket", "kronis", "kuadrat", "kualitas", "kuantum", "kuartal", "kubur", "kucai", "kuda", "kudeta",
     "kue", "kuhon", "kuintal", "kuis", "kuliah", "kulit", "kumal", "kumbang", "kumis", "kumpul",
     "kunci", "kuning", "kupas", "kuping", "kurang", "kuras",
-    "kurma", "kursus", "kurung", "kusir", "kutip", "kwalitas", "label",
+    "kurma", "kursus", "kurung", "kutip", "kwalitas", "label",
     "lagak", "lagi", "lagoon", "lahan", "lahir", "lain", "lajur"]
 }

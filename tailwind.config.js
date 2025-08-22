@@ -12,6 +12,7 @@ module.exports = {
     extend: {
       fontFamily: {
         rubik: ["Rubik"],
+        worksans: ["Work-Sans"]
       },
       keyframes: {
         pop: {

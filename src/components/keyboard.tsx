@@ -47,7 +47,7 @@ type KeyboardProps = {
 
 export default function Keyboard({ onKeyPress, onBackspace, onEnter }: KeyboardProps) {
     return (
-        <div className="grid grid-rows-3 w-[60%] max-w-[800px] min-w-[350px] gap-2 font-mono font-bold">
+        <div className="grid grid-rows-3 w-[60%] max-w-[800px] min-w-[350px] gap-2 font-bold">
             {/* Row 1 */}
             <div className="grid grid-cols-10 gap-2">
                 {"QWERTYUIOP".split("").map((letter) => (
@@ -62,7 +62,7 @@ export default function Keyboard({ onKeyPress, onBackspace, onEnter }: KeyboardP
             </div>
 
             {/* Row 2 */}
-            <div className="grid grid-cols-9 gap-2">
+            <div className="grid grid-cols-9 gap-2 min-w-[750px] mx-auto">
                 {"ASDFGHJKL".split("").map((letter) => (
                     <button
                         key={letter}
