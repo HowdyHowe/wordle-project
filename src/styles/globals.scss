@@ -5,9 +5,9 @@
 html {
   // background-color: white;
   // color: #0e0e0e;
-  @apply bg-white text-[#0e0e0e] font-rubik
+  // @apply bg-black text-black font-rubik;
+  @apply bg-white text-black font-rubik;
 }
-
 
 // box
 .test {
@@ -20,18 +20,45 @@ html {
 
 // box status
 .box-incorrect {
-  @apply flex items-center justify-center w-[60px] h-[60px] bg-[#b6b6b6] text-white text-2xl rounded-md
+  @apply flex items-center justify-center w-[60px] h-[60px] bg-[#b6b6b6] text-white text-2xl rounded-md animate-flip
 }
 
 .box-semi-correct {
-  @apply flex items-center justify-center w-[60px] h-[60px] bg-[#dddd00] text-white text-2xl rounded-md
+  @apply flex items-center justify-center w-[60px] h-[60px] bg-[#dddd00] text-white text-2xl rounded-md animate-flip
 }
 
 .box-correct {
-  @apply flex items-center justify-center w-[60px] h-[60px] bg-[#2eb812] text-white text-2xl rounded-md
+  @apply flex items-center justify-center w-[60px] h-[60px] bg-[#2eb812] text-white text-2xl rounded-md animate-flip
 }
 
 // keyboard
 .keyboard-key {
-  @apply flex items-center justify-center h-[50px] text-xl rounded-md bg-[#dfe2ff] active:scale-90 active:bg-[#c7c9ff] transition-all duration-100
+  @apply flex items-center justify-center h-[50px] text-xl rounded-md bg-[#dfe2ff] active:scale-90 active:bg-[#c7c9ff] transition-all duration-75
 }
+
+
+// .test {
+//   @apply flex items-center justify-center w-[60px] h-[60px] border-2 border-[#2c2c2c] uppercase bg-[#0e0e0e] text-2xl rounded-md
+// }
+
+// .test-active {
+//   @apply flex items-center justify-center w-[60px] h-[60px] border-[3px] border-[#2c2c2c] uppercase bg-[#0e0e0e] text-2xl rounded-md animate-pop
+// }
+
+// // box status
+// .box-incorrect {
+//   @apply flex items-center justify-center w-[60px] h-[60px] bg-[#b6b6b6] text-white text-2xl rounded-md animate-flip
+// }
+
+// .box-semi-correct {
+//   @apply flex items-center justify-center w-[60px] h-[60px] bg-[#dddd00] text-white text-2xl rounded-md animate-flip
+// }
+
+// .box-correct {
+//   @apply flex items-center justify-center w-[60px] h-[60px] bg-[#2eb812] text-white text-2xl rounded-md animate-flip
+// }
+
+// // keyboard
+// .keyboard-key {
+//   @apply flex items-center justify-center h-[50px] text-xl rounded-md bg-[#2c2c2c] text-white active:scale-90 active:bg-[#c7c9ff] transition-all duration-75
+// }

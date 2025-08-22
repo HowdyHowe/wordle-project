@@ -140,7 +140,8 @@ export default function MainPage() {
             setDone(prev => ({...prev, [`line${turn}`]: true}))
             setTurn(turn + 1);
             const nextTurn = turn + 1
-            setTimeout(() => setGuess([]), 0);
+            // setTimeout(() => setGuess([]), 0);
+            setGuess([]);
 
             // checking if all word is right
             if (data[turn].every(item => item.status === "O")) {
@@ -233,6 +234,7 @@ export default function MainPage() {
                                 data[2][i].status === "O" ? "box-correct" :
                                 data[2][i].status === "I" ? "box-semi-correct" :
                                 data[2][i].status === "X" ? "box-incorrect" : "test"
+
                             }
                             >
                                 {done.line2 == false ? turn == 2 ? guess[i] : "" : data[2][i].letter}

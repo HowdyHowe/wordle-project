@@ -4,7 +4,7 @@ import "@/styles/font-face.scss"
 
 export const metadata: Metadata = {
   title: "toba.dev",
-  description: "Toba's portfolio website.",
+  description: "Toba's Wordle game project.",
 };
 
 export default function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
