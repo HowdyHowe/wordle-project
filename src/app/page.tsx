@@ -183,7 +183,10 @@ export default function MainPage() {
     }, [guess, turn, isWord]);
 
     return (
-        <main className="relative flex flex-col items-center justify-start mt-[150px] w-full h-full">
+        <main className={`main ${
+            darkMode ? "bg-black text-white": "bg-white text-black"
+        }`}>
+
             {
                 win == "win" ?
                 <PopUp
@@ -208,6 +211,7 @@ export default function MainPage() {
                 title={"YOU LOSE!!"}
                 message={"You cannot guess the word with given chance."}/>: ""
             }
+
             <Navbar/>
             {/* <h1>{JSON.stringify(data)}</h1>
             <h1>{guess}</h1>
@@ -236,7 +240,9 @@ export default function MainPage() {
                         Array.from({ length:maxWords }).map((_, i) => (
                             <div key={i} className={
                                 done.line2 == false ?
-                                (guess.length > i && turn == 2) ? "test-active" : "test" :
+                                darkMode ?
+                                (guess.length > i && turn == 2) ? "box-dark-active" : "box-dark" :
+                                (guess.length > i && turn == 2) ? "box-light-active" : "box-light" :
                                 data[2][i].status === "O" ? "box-correct" :
                                 data[2][i].status === "I" ? "box-semi-correct" :
                                 data[2][i].status === "X" ? "box-incorrect" : "test"
@@ -253,7 +259,9 @@ export default function MainPage() {
                         Array.from({ length:maxWords }).map((_, i) => (
                             <div key={i} className={
                                 done.line3 == false ?
-                                (guess.length > i && turn == 3) ? "test-active" : "test" :
+                                darkMode ?
+                                (guess.length > i && turn == 3) ? "box-dark-active" : "box-dark" :
+                                (guess.length > i && turn == 3) ? "box-light-active" : "box-light" :
                                 data[3][i].status === "O" ? "box-correct" :
                                 data[3][i].status === "I" ? "box-semi-correct" :
                                 data[3][i].status === "X" ? "box-incorrect" : "test"
@@ -269,7 +277,9 @@ export default function MainPage() {
                         Array.from({ length:maxWords }).map((_, i) => (
                             <div key={i} className={
                                 done.line4 == false ?
-                                (guess.length > i && turn == 4) ? "test-active" : "test" :
+                                darkMode ?
+                                (guess.length > i && turn == 4) ? "box-dark-active" : "box-dark" :
+                                (guess.length > i && turn == 4) ? "box-light-active" : "box-light" :
                                 data[4][i].status === "O" ? "box-correct" :
                                 data[4][i].status === "I" ? "box-semi-correct" :
                                 data[4][i].status === "X" ? "box-incorrect" : "test"
@@ -285,7 +295,9 @@ export default function MainPage() {
                         Array.from({ length:maxWords }).map((_, i) => (
                             <div key={i} className={
                                 done.line5 == false ?
-                                (guess.length > i && turn == 5) ? "test-active" : "test" :
+                                darkMode ?
+                                (guess.length > i && turn == 5) ? "box-dark-active" : "box-dark" :
+                                (guess.length > i && turn == 5) ? "box-light-active" : "box-light" :
                                 data[5][i].status === "O" ? "box-correct" :
                                 data[5][i].status === "I" ? "box-semi-correct" :
                                 data[5][i].status === "X" ? "box-incorrect" : "test"
@@ -301,7 +313,9 @@ export default function MainPage() {
                         Array.from({ length:maxWords }).map((_, i) => (
                             <div key={i} className={
                                 done.line6 == false ?
-                                (guess.length > i && turn == 6) ? "test-active" : "test" :
+                                darkMode ?
+                                (guess.length > i && turn == 6) ? "box-dark-active" : "box-dark" :
+                                (guess.length > i && turn == 6) ? "box-light-active" : "box-light" :
                                 data[6][i].status === "O" ? "box-correct" :
                                 data[6][i].status === "I" ? "box-semi-correct" :
                                 data[6][i].status === "X" ? "box-incorrect" : "test"

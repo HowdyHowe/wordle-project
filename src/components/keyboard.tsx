@@ -39,6 +39,9 @@
 //     )
 // }
 
+import { rootState } from "@/store";
+import { useSelector } from "react-redux";
+
 type KeyboardProps = {
     onKeyPress: (key: string) => void;
     onBackspace: () => void;
@@ -46,6 +49,9 @@ type KeyboardProps = {
 };
 
 export default function Keyboard({ onKeyPress, onBackspace, onEnter }: KeyboardProps) {
+
+    const darkMode = useSelector((state: rootState) => state.theme.darkMode)
+
     return (
         <div className="grid grid-rows-3 w-[60%] max-w-[800px] min-w-[350px] gap-2 font-bold">
             {/* Row 1 */}
@@ -53,7 +59,9 @@ export default function Keyboard({ onKeyPress, onBackspace, onEnter }: KeyboardP
                 {"QWERTYUIOP".split("").map((letter) => (
                     <button
                         key={letter}
-                        className="keyboard-key"
+                        className={`keyboard-key ${
+                            darkMode ? "bg-[#0e0e0e] active:bg-[#2c2c2c] lg:hover:bg-[#1f1f1f]" : "bg-[#dfe2ff] active:bg-[#c7c9ff] lg:hover:bg-[#d8dbff]"
+                        }`}
                         onClick={() => onKeyPress(letter)}
                     >
                         {letter}
@@ -66,7 +74,9 @@ export default function Keyboard({ onKeyPress, onBackspace, onEnter }: KeyboardP
                 {"ASDFGHJKL".split("").map((letter) => (
                     <button
                         key={letter}
-                        className="keyboard-key"
+                        className={`keyboard-key ${
+                            darkMode ? "bg-[#0e0e0e] active:bg-[#2c2c2c] lg:hover:bg-[#1f1f1f]" : "bg-[#dfe2ff] active:bg-[#c7c9ff] lg:hover:bg-[#d8dbff]"
+                        }`}
                         onClick={() => onKeyPress(letter)}
                     >
                         {letter}
@@ -77,7 +87,9 @@ export default function Keyboard({ onKeyPress, onBackspace, onEnter }: KeyboardP
             {/* Row 3 */}
             <div className="grid grid-cols-11 gap-2">
                 <button
-                    className="keyboard-key col-span-2"
+                    className={`keyboard-key col-span-2 ${
+                            darkMode ? "bg-[#0e0e0e] active:bg-[#2c2c2c] lg:hover:bg-[#1f1f1f]" : "bg-[#dfe2ff] active:bg-[#c7c9ff] lg:hover:bg-[#d8dbff]"
+                        }`}
                     onClick={onBackspace}
                 >
                     Delete
@@ -86,7 +98,9 @@ export default function Keyboard({ onKeyPress, onBackspace, onEnter }: KeyboardP
                 {"ZXCVBNM".split("").map((letter) => (
                     <button
                         key={letter}
-                        className="keyboard-key"
+                        className={`keyboard-key ${
+                            darkMode ? "bg-[#0e0e0e] active:bg-[#2c2c2c] lg:hover:bg-[#1f1f1f]" : "bg-[#dfe2ff] active:bg-[#c7c9ff] lg:hover:bg-[#d8dbff]"
+                        }`}
                         onClick={() => onKeyPress(letter)}
                     >
                         {letter}
@@ -94,7 +108,9 @@ export default function Keyboard({ onKeyPress, onBackspace, onEnter }: KeyboardP
                 ))}
 
                 <button
-                    className="keyboard-key col-span-2"
+                    className={`keyboard-key col-span-2 ${
+                            darkMode ? "bg-[#0e0e0e] active:bg-[#2c2c2c] lg:hover:bg-[#1f1f1f]" : "bg-[#dfe2ff] active:bg-[#c7c9ff] lg:hover:bg-[#d8dbff]"
+                        }`}
                     onClick={onEnter}
                 >
                     Enter

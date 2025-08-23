@@ -2,13 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  // background-color: white;
-  // color: #0e0e0e;
-  // @apply bg-black text-black font-rubik;
-  @apply bg-white text-black font-rubik;
-}
+// html {
+//   // background-color: white;
+//   // color: #0e0e0e;
+//   // @apply bg-black text-black font-rubik;
+//   @apply font-rubik;
+// }
 
+.main {
+  @apply relative flex flex-col items-center justify-start font-rubik pt-[150px] w-screen h-screen;
+}
 
 .box-light {
   @apply flex items-center justify-center w-[60px] h-[60px] border-2 border-[#d1d1d1] uppercase bg-white text-2xl rounded-md
@@ -39,5 +42,6 @@ html {
 }
 
 .keyboard-key {
-  @apply flex items-center justify-center h-[50px] text-xl rounded-md bg-[#dfe2ff] active:scale-90 active:bg-[#c7c9ff] lg:hover:bg-[#d8dbff] transition-all duration-75
+  @apply flex items-center justify-center h-[50px] text-xl rounded-md active:scale-90 active:bg-[#c7c9ff] lg:hover:bg-[#d8dbff] transition-all duration-75
 }
+

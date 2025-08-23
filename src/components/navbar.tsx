@@ -23,18 +23,18 @@ export default function Navbar() {
             <div className="grid grid-cols-2 w-[300px] h-[75px] rounded-xl lg:w-[600px]">
                 <div className="flex items-center justify-start text-2xl font-bold">WORDLE.</div>
                 <div className="flex items-center justify-evenly">
-                    <IoFlagOutline className="w-[40px] h-[40px] p-[9px] bg-[#dfe2ff] rounded-lg"/>
-                    <RxSymbol className="w-[40px] h-[40px] p-[9px] bg-[#dfe2ff] rounded-lg"/>
-                    <FaInfo className="w-[40px] h-[40px] p-[11px] bg-[#dfe2ff] rounded-lg"/>
-                    <GoGear className="w-[40px] h-[40px] p-[8px] bg-[#dfe2ff] rounded-lg"/>
+                    <IoFlagOutline className={`w-[40px] h-[40px] p-[9px] rounded-lg ${darkMode ? "bg-[#0e0e0e] lg:hover:bg-[#1f1f1f]" : "bg-[#dfe2ff] lg:hover:bg-[#d8dbff]"}`}/>
+                    <RxSymbol className={`w-[40px] h-[40px] p-[9px] rounded-lg ${darkMode ? "bg-[#0e0e0e] lg:hover:bg-[#1f1f1f]" : "bg-[#dfe2ff] lg:hover:bg-[#d8dbff]"}`}/>
+                    <FaInfo className={`w-[40px] h-[40px] p-[11px] rounded-lg ${darkMode ? "bg-[#0e0e0e] lg:hover:bg-[#1f1f1f]" : "bg-[#dfe2ff] lg:hover:bg-[#d8dbff]"}`}/>
+                    <GoGear className={`w-[40px] h-[40px] p-[8px] rounded-lg ${darkMode ? "bg-[#0e0e0e] lg:hover:bg-[#1f1f1f]" : "bg-[#dfe2ff] lg:hover:bg-[#d8dbff]"}`}/>
 
                     {
                         darkMode ?
                         <button onClick={() => dispatch(toggleTheme())}>
-                            <CiDark className="w-[40px] h-[40px] p-[6px] bg-[#dfe2ff] rounded-lg lg:hover:bg-[#d8dbff] duration-200"/>
+                            <CiDark className={`w-[40px] h-[40px] p-[6px] rounded-lg duration-200 ${darkMode ? "bg-[#0e0e0e] lg:hover:bg-[#1f1f1f]" : "bg-[#dfe2ff] lg:hover:bg-[#d8dbff]"}`}/>
                         </button>:
                         <button onClick={() => dispatch(toggleTheme())}>
-                            <CiLight className="w-[40px] h-[40px] p-[7px] bg-[#dfe2ff] rounded-lg lg:hover:bg-[#d8dbff] duration-200"/>
+                            <CiLight className={`w-[40px] h-[40px] p-[7px] rounded-lg duration-200 ${darkMode ? "bg-[#0e0e0e] lg:hover:bg-[#1f1f1f]" : "bg-[#dfe2ff] lg:hover:bg-[#d8dbff]"}`}/>
                         </button>
                     }
                 </div>
