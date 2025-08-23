@@ -189,6 +189,7 @@ export default function MainPage() {
         return () => window.removeEventListener("keydown", handleKeyDown);
     }, [guess, turn, isWord]);
 
+
     return (
         <main className={`main ${darkMode ? "bg-black text-white": "bg-white text-black"}`}>
 
