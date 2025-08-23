@@ -93,6 +93,8 @@ export default function MainPage() {
         data = {};
         setGuess([]);
         setTurn(1);
+        setShow(false);
+        setWin("");
         isProcessing.current = false;
         setDone({
             line1: false,
@@ -183,9 +185,7 @@ export default function MainPage() {
     }, [guess, turn, isWord]);
 
     return (
-        <main className={`main ${
-            darkMode ? "bg-black text-white": "bg-white text-black"
-        }`}>
+        <main className={`main ${darkMode ? "bg-black text-white": "bg-white text-black"}`}>
 
             {
                 win == "win" ?
@@ -197,8 +197,10 @@ export default function MainPage() {
                             setWin("");
                         }
                     }
+                    playAgain={() => handleEnter("custom")}
                     title={"YOU WIN!!"}
-                    message={"You correctly guess the word."}/>:
+                    message={"You correctly guess the word."}
+                    answer={isWord}/>:
 
                 win == "lose" ?
                 <PopUp show={show}
@@ -208,16 +210,18 @@ export default function MainPage() {
                         setWin("");
                     }
                 }
+                playAgain={() => handleEnter("custom")}
                 title={"YOU LOSE!!"}
-                message={"You cannot guess the word with given chance."}/>: ""
+                message={"You cannot guess the word with given chance."}
+                answer={isWord}/> : ""
             }
 
             <Navbar/>
             {/* <h1>{JSON.stringify(data)}</h1>
             <h1>{guess}</h1>
             <h1>{turn}</h1> */}
-            <div className="grid grid-rows-4 gap-[6px] mb-10 font-bold">
-                <div className="grid grid-cols-5 gap-[6px]">
+            <div className="grid grid-rows-4 gap-[3px] mt-[85px] mb-9 font-bold lg:mt-[0px] lg:gap-[6px]">
+                <div className="grid grid-cols-5 gap-[3px] lg:gap-[6px]">
                     {
                         Array.from({ length:maxWords }).map((_, i) => (
                             <div key={i} className={
@@ -235,7 +239,7 @@ export default function MainPage() {
                         ))
                     }
                 </div>
-                <div className="grid grid-cols-5 gap-[6px]">
+                <div className="grid grid-cols-5 gap-[3px] lg:gap-[6px]">
                     {
                         Array.from({ length:maxWords }).map((_, i) => (
                             <div key={i} className={
@@ -254,7 +258,7 @@ export default function MainPage() {
                         ))
                     }
                 </div>
-                <div className="grid grid-cols-5 gap-[6px]">
+                <div className="grid grid-cols-5 gap-[3px] lg:gap-[6px]">
                     {
                         Array.from({ length:maxWords }).map((_, i) => (
                             <div key={i} className={
@@ -272,7 +276,7 @@ export default function MainPage() {
                         ))
                     }
                 </div>
-                <div className="grid grid-cols-5 gap-[6px]">
+                <div className="grid grid-cols-5 gap-[3px] lg:gap-[6px]">
                     {
                         Array.from({ length:maxWords }).map((_, i) => (
                             <div key={i} className={
@@ -290,7 +294,7 @@ export default function MainPage() {
                         ))
                     }
                 </div>
-                <div className="grid grid-cols-5 gap-[6px]">
+                <div className="grid grid-cols-5 gap-[3px] lg:gap-[6px]">
                     {
                         Array.from({ length:maxWords }).map((_, i) => (
                             <div key={i} className={
@@ -308,7 +312,7 @@ export default function MainPage() {
                         ))
                     }
                 </div>
-                <div className="grid grid-cols-5 gap-[6px]">
+                <div className="grid grid-cols-5 gap-[3px] lg:gap-[6px]">
                     {
                         Array.from({ length:maxWords }).map((_, i) => (
                             <div key={i} className={
@@ -327,6 +331,12 @@ export default function MainPage() {
                     }
                 </div>
             </div>
+
+            {/* <div className="absolute flex items-center justify-center text-white text-xl bottom-0 w-full h-[125px] bg-[#872341] ">
+                <img src={"/hug-anime.gif"} className="w-[100px] "/>
+                <p className="px-2"></p>
+                <img src={"/tenor.gif"} className="w-[75px] "/>
+            </div> */}
 
             <Keyboard
                 onKeyPress={(key) => handleLetterInput(key, "custom")}

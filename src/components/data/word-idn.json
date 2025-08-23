@@ -40,7 +40,7 @@
     "buku", "pensil", "pena", "penghapus", "penggaris", "kertas", "map", "tas", "kotak", "botol",
     "gelas", "piring", "mangkuk", "sendok", "garpu", "pisau", "kompor", "panci", "wajan", "rice",
     "lemari", "meja", "kursi", "tempat", "kasur", "bantal", "selimut", "sprei", "gorden", "lampu",
-    "radio", "hp", "laptop", "printer", "kamera",
+    "radio", "hp", "laptop", "printer", "kamera", "jilat", "pilek", "punah", "ribet",
     "kunci", "gembok", "pintu", "jendela", "atap", "lantai", "dinding", "kamar", "ruang",
     "baju", "celana", "rok", "kemeja", "kaos", "jaket", "jas", "dress", "blus", "sweater",
     "sepatu", "sandal", "kaus", "celana", "ikat", "topi", "helm", "kacamata", "jam", "gelang",
@@ -81,13 +81,13 @@
     "berkata", "berlaku", "bermula", "bernama", "berpose", "berubah", "berumur", "bertamu", "bertanya", "bertugas",
     "beruang", "berusaha", "betapun", "betulan", "biarkan", "bidadari", "bidang", "bihara", "bijaksana",
     "bikini", "bilangan", "bilang", "bincang", "bintang", "biologi", "bioskop", "biscuit", "biskuit",
-    "blangko", "bocoran", "bodohnya", "bogem", "bohong", "bongkar", "boneka", "bordir",
-    "borong", "botak", "botol", "boxing", "bracket", "brankas", "breakfast", "bricket", "brosur", "browsing",
+    "blangko", "bocoran", "bodohnya", "bohong", "bongkar", "boneka", "bordir",
+    "borong", "botak", "botol", "brankas", "breakfast", "bricket", "brosur", "browsing",
     "budaya", "budidaya", "bukalapak", "bukanlah", "bukti", "bulanan", "bullying", "bumbu", "bungkus", "bunga",
     "bunting", "burung", "busana", "business", "buster", "button", "cacing", "cairan", "cakram", "cakrawala",
     "cakupan", "cambuk", "camilan", "campuran", "candaan", "canggih", "cantik", "caption", "carbon", "casual", "catatan", "dadakan", "daerah",
     "dahulu", "damai", "dancing", "dangdut", "darurat", "datang", "dating", "dawet",
-    "december", "format", "kabar", "kacang", "kacau", "kadang",
+    "december", "format", "kabar", "kacang", "kacau", "kadang", "jelas", "senar", "tupai",
     "kagum", "kajian", "kakak", "kaktus", "kalah", "kalem", "kalimat", "kambing",
     "kamera", "kampong", "kampus", "kancing", "kandang", "kangkung", "kantong", "kanton", "kapan", "kapas",
     "kapital", "kapling", "karena", "karet", "karier", "karung", "kasihan", "kasino", "kasung",
@@ -107,5 +107,5 @@
     "kue", "kuhon", "kuintal", "kuis", "kuliah", "kulit", "kumal", "kumbang", "kumis", "kumpul",
     "kunci", "kuning", "kupas", "kuping", "kurang", "kuras",
     "kurma", "kursus", "kurung", "kutip", "kwalitas", "label",
-    "lagak", "lagi", "lagoon", "lahan", "lahir", "lain", "lajur"]
+    "lagi", "lahan", "lahir", "lain", "lajur"]
 }

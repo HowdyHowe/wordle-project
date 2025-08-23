@@ -1,43 +1,3 @@
-// export default function Keyboard() {
-//     return (
-//         <div className="grid grid-rows-3 w-[60%] max-w-[800px] min-w-[350px] gap-2 font-mono font-bold">
-//             <div className="grid grid-cols-10 gap-2">
-//                 <div className="keyboard-key">Q</div>
-//                 <div className="keyboard-key">W</div>
-//                 <div className="keyboard-key">E</div>
-//                 <div className="keyboard-key">R</div>
-//                 <div className="keyboard-key">T</div>
-//                 <div className="keyboard-key">Y</div>
-//                 <div className="keyboard-key">U</div>
-//                 <div className="keyboard-key">I</div>
-//                 <div className="keyboard-key">O</div>
-//                 <div className="keyboard-key">P</div>
-//             </div>
-//             <div className="grid grid-cols-9 gap-2">
-//                 <div className="keyboard-key">A</div>
-//                 <div className="keyboard-key">S</div>
-//                 <div className="keyboard-key">D</div>
-//                 <div className="keyboard-key">F</div>
-//                 <div className="keyboard-key">G</div>
-//                 <div className="keyboard-key">H</div>
-//                 <div className="keyboard-key">J</div>
-//                 <div className="keyboard-key">K</div>
-//                 <div className="keyboard-key">L</div>
-//             </div>
-//             <div className="grid grid-cols-11 gap-2">
-//                 <div className="keyboard-key col-span-2">Delete</div>
-//                 <div className="keyboard-key">Z</div>
-//                 <div className="keyboard-key">X</div>
-//                 <div className="keyboard-key">C</div>
-//                 <div className="keyboard-key">V</div>
-//                 <div className="keyboard-key">B</div>
-//                 <div className="keyboard-key">N</div>
-//                 <div className="keyboard-key">M</div>
-//                 <div className="keyboard-key col-span-2">Enter</div>
-//             </div>
-//         </div>
-//     )
-// }
 
 import { rootState } from "@/store";
 import { useSelector } from "react-redux";
@@ -53,9 +13,9 @@ export default function Keyboard({ onKeyPress, onBackspace, onEnter }: KeyboardP
     const darkMode = useSelector((state: rootState) => state.theme.darkMode)
 
     return (
-        <div className="grid grid-rows-3 w-[60%] max-w-[800px] min-w-[350px] gap-2 font-bold">
+        <div className="grid grid-rows-3 gap-2 w-[350px] font-bold lg:w-[60%] lg:max-w-[800px] lg:min-w-[350px]">
             {/* Row 1 */}
-            <div className="grid grid-cols-10 gap-2">
+            <div className="grid grid-cols-10 gap-1 w-[350px] lg:gap-2 lg:min-w-full">
                 {"QWERTYUIOP".split("").map((letter) => (
                     <button
                         key={letter}
@@ -70,7 +30,7 @@ export default function Keyboard({ onKeyPress, onBackspace, onEnter }: KeyboardP
             </div>
 
             {/* Row 2 */}
-            <div className="grid grid-cols-9 gap-2 min-w-[750px] mx-auto">
+            <div className="grid grid-cols-9 w-[325px] mx-auto gap-1 lg:gap-2 lg:min-w-[750px]">
                 {"ASDFGHJKL".split("").map((letter) => (
                     <button
                         key={letter}
@@ -85,7 +45,7 @@ export default function Keyboard({ onKeyPress, onBackspace, onEnter }: KeyboardP
             </div>
 
             {/* Row 3 */}
-            <div className="grid grid-cols-11 gap-2">
+            <div className="grid grid-cols-11 gap-1 w-[350px] lg:gap-2 lg:min-w-full">
                 <button
                     className={`keyboard-key col-span-2 ${
                             darkMode ? "bg-[#0e0e0e] active:bg-[#2c2c2c] lg:hover:bg-[#1f1f1f]" : "bg-[#dfe2ff] active:bg-[#c7c9ff] lg:hover:bg-[#d8dbff]"
