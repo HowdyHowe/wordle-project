@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import "@/styles/globals.scss"
 import "@/styles/font-face.scss"
+import Provider from "@/store/provider"
 
 export const metadata: Metadata = {
   title: "toba.dev",
@@ -12,7 +13,7 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
   return (
     <html lang="en">
       <body>
-        {children}
+        <Provider>{children}</Provider>
       </body>
     </html>
   );

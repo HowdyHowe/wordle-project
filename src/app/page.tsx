@@ -6,6 +6,8 @@ import Navbar from "@/components/navbar";
 import PopUp from "@/components/pop-up";
 import { useEffect, useRef, useState } from "react";
 import randomWord from "@/components/data/word-idn.json"
+import { useDispatch, useSelector } from "react-redux";
+import { rootState } from "@/store";
 
 type LetterData = {
   letter: string;
@@ -26,6 +28,8 @@ const isValidWord = (guess: string) =>  {
 }
 
 export default function MainPage() {
+
+    const darkMode = useSelector((state: rootState) => state.theme.darkMode)
     const [ guess, setGuess ] = useState<string[]>([]);
     const [ turn, setTurn ] = useState(1);
     const [ win, setWin ] = useState("")
@@ -214,10 +218,12 @@ export default function MainPage() {
                         Array.from({ length:maxWords }).map((_, i) => (
                             <div key={i} className={
                                 done.line1 == false ?
-                                (guess.length > i && turn == 1) ? "test-active" : "test" :
+                                darkMode ?
+                                (guess.length > i && turn == 1) ? "box-dark-active" : "box-dark" :
+                                (guess.length > i && turn == 1) ? "box-light-active" : "box-light" :
                                 data[1][i].status === "O" ? "box-correct" :
                                 data[1][i].status === "I" ? "box-semi-correct" :
-                                data[1][i].status === "X" ? "box-incorrect" : "test"
+                                data[1][i].status === "X" ? "box-incorrect" : "box-light"
                             }
                             >
                                 {done.line1 == false ? turn == 1 ? guess[i] : "" : data[1][i].letter}
