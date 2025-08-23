@@ -18,6 +18,8 @@ const maxWords = 5;
 const wordList: string[] = randomWord.kata;
 const wordSet = new Set(wordList);
 let data: Record<number, LetterData[]> = {};
+const keyboardList: LetterData[] = []
+
 // const filteredWords = wordList.filter(w => w.length === maxWords);
 // const word = filteredWords[Math.floor(Math.random() * filteredWords.length)].toUpperCase();
 // const word = "PINTU";
@@ -121,6 +123,7 @@ export default function MainPage() {
         data[turn] = [];
         for (let i = 0; i < g.length; i++) {
             data[turn].push({letter: g[i], status: "X"});
+            keyboardList.push({letter: g[i], status: "X"})
         }
 
         if (g.length == (maxWords)) {
@@ -128,6 +131,7 @@ export default function MainPage() {
             for (let i = 0; i < g.length; i++) {
                 if (g[i] === isWord[i]) {
                     data[turn][i].status = "O";
+                    keyboardList[i].status = "O";
                     setWord[i] = "";
                 }
             }
@@ -137,6 +141,7 @@ export default function MainPage() {
                 if (data[turn][i].status === "X") {
                     if (setWord.includes(g[i])) {
                         data[turn][i].status = "I";
+                        keyboardList[i].status = "I";
                         const index = setWord.indexOf(g[i]);
                         setWord.splice(index, 1);
                     }
@@ -339,6 +344,7 @@ export default function MainPage() {
             </div> */}
 
             <Keyboard
+                letterStatus={keyboardList}
                 onKeyPress={(key) => handleLetterInput(key, "custom")}
                 onBackspace={() => handleBackspace("custom")}
                 onEnter={() => handleEnter("custom")}
