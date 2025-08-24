@@ -2,11 +2,13 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface StateData {
     darkMode: boolean;
+    surrend: boolean;
     boxCount: number;
 }
 
 const initialState: StateData = {
     darkMode: false,
+    surrend: false,
     boxCount: 5
 }
 
@@ -17,6 +19,9 @@ const stateDataSlice = createSlice({
         toggleTheme: (state) => {
             state.darkMode = !state.darkMode
         },
+        setSurrend: (state) => {
+            state.surrend = !state.surrend
+        },
         setBoxCount: (state, action: PayloadAction<number>) => {
             state.boxCount = action.payload;
         },
@@ -24,5 +29,5 @@ const stateDataSlice = createSlice({
 });
 
 
-export const { toggleTheme, setBoxCount } = stateDataSlice.actions;
+export const { toggleTheme, setBoxCount, setSurrend } = stateDataSlice.actions;
 export default stateDataSlice.reducer;

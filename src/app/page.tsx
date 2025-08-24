@@ -6,8 +6,10 @@ import Navbar from "@/components/navbar";
 import PopUp from "@/components/pop-up";
 import { useEffect, useRef, useState } from "react";
 import randomWord from "@/components/data/word-idn.json"
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import SurrendPopUp from "@/components/surrend-pop-up";
 import { rootState } from "@/store";
+import { setSurrend } from "@/store/state";
 
 type LetterData = {
   letter: string;
@@ -30,13 +32,15 @@ const isValidWord = (guess: string) =>  {
 }
 
 export default function MainPage() {
-    const darkMode = useSelector((state: rootState) => state.stateData.darkMode)
-    const maxWords = useSelector((state: rootState) => state.stateData.boxCount)
+    const darkMode = useSelector((state: rootState) => state.stateData.darkMode);
+    const maxWords = useSelector((state: rootState) => state.stateData.boxCount);
+    const surrend = useSelector((state: rootState) => state.stateData.surrend);
+    const dispatch = useDispatch();
 
     const [ guess, setGuess ] = useState<string[]>([]);
     const [ turn, setTurn ] = useState(1);
-    const [ win, setWin ] = useState("")
-    const [ show, setShow ] = useState(false)
+    const [ win, setWin ] = useState("");
+    const [ show, setShow ] = useState(false);
     const [ isWord, setIsWord ] = useState(() => {
         const filteredWords = wordList.filter(w => w.length === maxWords);
         return filteredWords[Math.floor(Math.random() * filteredWords.length)].toUpperCase();
@@ -213,6 +217,19 @@ export default function MainPage() {
 
     return (
         <main className={`main ${darkMode ? "bg-black text-white": "bg-white text-black"}`}>
+            {
+                <SurrendPopUp
+                    show={surrend}
+                    onClose={() => dispatch(setSurrend())}
+                    title="Surrend?"
+                    message="Surrend"
+                    playAgain={() => {
+                        dispatch(setSurrend())
+                        resetGame()
+                    }}
+
+                />
+            }
 
             {
                 win == "win" ?
@@ -243,10 +260,8 @@ export default function MainPage() {
                 answer={isWord}/> : ""
             }
 
-            <Navbar surrend={resetGame}/>
-            {/* <h1>{JSON.stringify(data)}</h1>
-            <h1>{guess}</h1>
-            <h1>{turn}</h1> */}
+            <Navbar/>
+
             <div className="grid grid-rows-4 gap-[3px] mt-[85px] mb-9 font-bold lg:mt-[0px] lg:gap-[6px]">
                 <div className={`grid ${
                         maxWords === 5
