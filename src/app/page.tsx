@@ -6,7 +6,7 @@ import Navbar from "@/components/navbar";
 import PopUp from "@/components/pop-up";
 import { useEffect, useRef, useState } from "react";
 import randomWord from "@/components/data/word-idn.json"
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { rootState } from "@/store";
 
 type LetterData = {
@@ -14,7 +14,7 @@ type LetterData = {
   status: "O" | "I" | "X";
 };
 
-const maxWords: number = 6;
+// const maxWords: number = 6;
 const wordList: string[] = randomWord.kata;
 const wordSet = new Set(wordList);
 let data: Record<number, LetterData[]> = {};
@@ -26,12 +26,13 @@ let keyboardList: LetterData[] = []
 
 
 const isValidWord = (guess: string) =>  {
-  return wordSet.has(guess.toLowerCase());
+    return wordSet.has(guess.toLowerCase());
 }
 
 export default function MainPage() {
+    const darkMode = useSelector((state: rootState) => state.stateData.darkMode)
+    const maxWords = useSelector((state: rootState) => state.stateData.boxCount)
 
-    const darkMode = useSelector((state: rootState) => state.theme.darkMode)
     const [ guess, setGuess ] = useState<string[]>([]);
     const [ turn, setTurn ] = useState(1);
     const [ win, setWin ] = useState("")
@@ -247,7 +248,13 @@ export default function MainPage() {
             <h1>{guess}</h1>
             <h1>{turn}</h1> */}
             <div className="grid grid-rows-4 gap-[3px] mt-[85px] mb-9 font-bold lg:mt-[0px] lg:gap-[6px]">
-                <div className={`grid grid-cols-${maxWords} gap-[3px] lg:gap-[6px]`}>
+                <div className={`grid ${
+                        maxWords === 5
+                        ? "grid-cols-5"
+                        : maxWords === 6
+                        ? "grid-cols-6"
+                        : "grid-cols-7"
+                    } gap-[3px] lg:gap-[6px]`}>
                     {
                         Array.from({ length:maxWords }).map((_, i) => (
                             <div key={i} className={
@@ -265,7 +272,13 @@ export default function MainPage() {
                         ))
                     }
                 </div>
-                <div className={`grid grid-cols-${maxWords} gap-[3px] lg:gap-[6px]`}>
+                <div className={`grid ${
+                        maxWords === 5
+                        ? "grid-cols-5"
+                        : maxWords === 6
+                        ? "grid-cols-6"
+                        : "grid-cols-7"
+                    } gap-[3px] lg:gap-[6px]`}>
                     {
                         Array.from({ length:maxWords }).map((_, i) => (
                             <div key={i} className={
@@ -284,7 +297,13 @@ export default function MainPage() {
                         ))
                     }
                 </div>
-                <div className={`grid grid-cols-${maxWords} gap-[3px] lg:gap-[6px]`}>
+                <div className={`grid ${
+                        maxWords === 5
+                        ? "grid-cols-5"
+                        : maxWords === 6
+                        ? "grid-cols-6"
+                        : "grid-cols-7"
+                    } gap-[3px] lg:gap-[6px]`}>
                     {
                         Array.from({ length:maxWords }).map((_, i) => (
                             <div key={i} className={
@@ -302,7 +321,13 @@ export default function MainPage() {
                         ))
                     }
                 </div>
-                <div className={`grid grid-cols-${maxWords} gap-[3px] lg:gap-[6px]`}>
+                <div className={`grid ${
+                        maxWords === 5
+                        ? "grid-cols-5"
+                        : maxWords === 6
+                        ? "grid-cols-6"
+                        : "grid-cols-7"
+                    } gap-[3px] lg:gap-[6px]`}>
                     {
                         Array.from({ length:maxWords }).map((_, i) => (
                             <div key={i} className={
@@ -320,7 +345,13 @@ export default function MainPage() {
                         ))
                     }
                 </div>
-                <div className={`grid grid-cols-${maxWords} gap-[3px] lg:gap-[6px]`}>
+                <div className={`grid ${
+                        maxWords === 5
+                        ? "grid-cols-5"
+                        : maxWords === 6
+                        ? "grid-cols-6"
+                        : "grid-cols-7"
+                    } gap-[3px] lg:gap-[6px]`}>
                     {
                         Array.from({ length:maxWords }).map((_, i) => (
                             <div key={i} className={
@@ -338,7 +369,13 @@ export default function MainPage() {
                         ))
                     }
                 </div>
-                <div className={`grid grid-cols-${maxWords} gap-[3px] lg:gap-[6px]`}>
+                <div className={`grid ${
+                        maxWords === 5
+                        ? "grid-cols-5"
+                        : maxWords === 6
+                        ? "grid-cols-6"
+                        : "grid-cols-7"
+                    } gap-[3px] lg:gap-[6px]`}>
                     {
                         Array.from({ length:maxWords }).map((_, i) => (
                             <div key={i} className={

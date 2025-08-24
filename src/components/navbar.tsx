@@ -1,11 +1,10 @@
 
 import { rootState } from "@/store"
-import { toggleTheme } from "@/store/theme"
+import { toggleTheme } from "@/store/state"
 import { CiDark, CiLight } from "react-icons/ci"
 import { FaInfo } from "react-icons/fa6"
 import { GoGear } from "react-icons/go"
 import { IoFlagOutline } from "react-icons/io5"
-import { RxSymbol } from "react-icons/rx"
 import { useDispatch, useSelector } from "react-redux"
 
 type nav = {
@@ -14,7 +13,7 @@ type nav = {
 
 export default function Navbar({surrend}: nav) {
     const dispatch = useDispatch();
-    const darkMode = useSelector((state: rootState) => state.theme.darkMode)
+    const darkMode = useSelector((state: rootState) => state.stateData.darkMode)
 
     return (
         <nav className="fixed top-0 flex items-center justify-center w-full">

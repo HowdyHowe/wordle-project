@@ -13,7 +13,7 @@ type PopUpProps = {
 };
 
 export default function PopUp({ title, message, answer, show, onClose, playAgain }: PopUpProps) {
-  const darkMode = useSelector((state: rootState) => state.theme.darkMode)
+  const darkMode = useSelector((state: rootState) => state.stateData.darkMode)
 
   if (!show) return null;
 

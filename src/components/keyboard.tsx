@@ -16,8 +16,7 @@ type KeyboardProps = {
 
 
 export default function Keyboard({ letterStatus, onKeyPress, onBackspace, onEnter }: KeyboardProps) {
-    const darkMode = useSelector((state: rootState) => state.theme.darkMode)
-    console.log(letterStatus)
+    const darkMode = useSelector((state: rootState) => state.stateData.darkMode)
 
     return (
         <div className="grid grid-rows-3 gap-1 w-full font-bold lg:gap-2 lg:w-[60%] lg:max-w-[800px] lg:min-w-[350px]">
