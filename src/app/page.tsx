@@ -14,7 +14,7 @@ type LetterData = {
   status: "O" | "I" | "X";
 };
 
-const maxWords = 5;
+const maxWords: number = 6;
 const wordList: string[] = randomWord.kata;
 const wordSet = new Set(wordList);
 let data: Record<number, LetterData[]> = {};
@@ -223,7 +223,7 @@ export default function MainPage() {
                             setWin("");
                         }
                     }
-                    playAgain={() => handleEnter("custom")}
+                    playAgain={() => resetGame()}
                     title={"YOU WIN!!"}
                     message={"You correctly guess the word."}
                     answer={isWord}/>:
@@ -236,18 +236,18 @@ export default function MainPage() {
                         setWin("");
                     }
                 }
-                playAgain={() => handleEnter("custom")}
+                playAgain={() => resetGame()}
                 title={"YOU LOSE!!"}
                 message={"You cannot guess the word with given chance."}
                 answer={isWord}/> : ""
             }
 
-            <Navbar/>
+            <Navbar surrend={resetGame}/>
             {/* <h1>{JSON.stringify(data)}</h1>
             <h1>{guess}</h1>
             <h1>{turn}</h1> */}
             <div className="grid grid-rows-4 gap-[3px] mt-[85px] mb-9 font-bold lg:mt-[0px] lg:gap-[6px]">
-                <div className="grid grid-cols-5 gap-[3px] lg:gap-[6px]">
+                <div className={`grid grid-cols-${maxWords} gap-[3px] lg:gap-[6px]`}>
                     {
                         Array.from({ length:maxWords }).map((_, i) => (
                             <div key={i} className={
@@ -265,7 +265,7 @@ export default function MainPage() {
                         ))
                     }
                 </div>
-                <div className="grid grid-cols-5 gap-[3px] lg:gap-[6px]">
+                <div className={`grid grid-cols-${maxWords} gap-[3px] lg:gap-[6px]`}>
                     {
                         Array.from({ length:maxWords }).map((_, i) => (
                             <div key={i} className={
@@ -284,7 +284,7 @@ export default function MainPage() {
                         ))
                     }
                 </div>
-                <div className="grid grid-cols-5 gap-[3px] lg:gap-[6px]">
+                <div className={`grid grid-cols-${maxWords} gap-[3px] lg:gap-[6px]`}>
                     {
                         Array.from({ length:maxWords }).map((_, i) => (
                             <div key={i} className={
@@ -302,7 +302,7 @@ export default function MainPage() {
                         ))
                     }
                 </div>
-                <div className="grid grid-cols-5 gap-[3px] lg:gap-[6px]">
+                <div className={`grid grid-cols-${maxWords} gap-[3px] lg:gap-[6px]`}>
                     {
                         Array.from({ length:maxWords }).map((_, i) => (
                             <div key={i} className={
@@ -320,7 +320,7 @@ export default function MainPage() {
                         ))
                     }
                 </div>
-                <div className="grid grid-cols-5 gap-[3px] lg:gap-[6px]">
+                <div className={`grid grid-cols-${maxWords} gap-[3px] lg:gap-[6px]`}>
                     {
                         Array.from({ length:maxWords }).map((_, i) => (
                             <div key={i} className={
@@ -338,7 +338,7 @@ export default function MainPage() {
                         ))
                     }
                 </div>
-                <div className="grid grid-cols-5 gap-[3px] lg:gap-[6px]">
+                <div className={`grid grid-cols-${maxWords} gap-[3px] lg:gap-[6px]`}>
                     {
                         Array.from({ length:maxWords }).map((_, i) => (
                             <div key={i} className={
