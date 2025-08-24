@@ -18,7 +18,7 @@ const maxWords = 5;
 const wordList: string[] = randomWord.kata;
 const wordSet = new Set(wordList);
 let data: Record<number, LetterData[]> = {};
-const keyboardList: LetterData[] = []
+let keyboardList: LetterData[] = []
 
 // const filteredWords = wordList.filter(w => w.length === maxWords);
 // const word = filteredWords[Math.floor(Math.random() * filteredWords.length)].toUpperCase();
@@ -49,6 +49,21 @@ export default function MainPage() {
         line6: false
     });
     const isProcessing = useRef(false);
+
+    // function to handle keyboard list status
+    const updateKeyboardList = (letter: string, status: "O" | "I" | "X") => {
+        const idx = keyboardList.findIndex(k => k.letter === letter);
+
+        if (idx !== -1) {
+            // Upgrade only if new status is stronger
+            const order = { "X": 0, "I": 1, "O": 2 };
+            if (order[status] > order[keyboardList[idx].status]) {
+                keyboardList[idx].status = status;
+            }
+        } else {
+            keyboardList.push({ letter, status });
+        }
+    };
 
     // Funtion to handle letter input
     const handleLetterInput = (key: string, source: "real" | "custom") => {
@@ -93,6 +108,7 @@ export default function MainPage() {
     // reset game logic
     const resetGame = () => {
         data = {};
+        keyboardList = []
         setGuess([]);
         setTurn(1);
         setShow(false);
@@ -121,9 +137,11 @@ export default function MainPage() {
 
         const setWord = isWord.split("");
         data[turn] = [];
+
         for (let i = 0; i < g.length; i++) {
             data[turn].push({letter: g[i], status: "X"});
-            keyboardList.push({letter: g[i], status: "X"})
+            // keyboardList.push({letter: g[i], status: "X"})
+            updateKeyboardList(g[i], "X");
         }
 
         if (g.length == (maxWords)) {
@@ -131,7 +149,8 @@ export default function MainPage() {
             for (let i = 0; i < g.length; i++) {
                 if (g[i] === isWord[i]) {
                     data[turn][i].status = "O";
-                    keyboardList[i].status = "O";
+                    // keyboardList[i].status = "O";
+                    updateKeyboardList(g[i], "O");
                     setWord[i] = "";
                 }
             }
@@ -141,7 +160,8 @@ export default function MainPage() {
                 if (data[turn][i].status === "X") {
                     if (setWord.includes(g[i])) {
                         data[turn][i].status = "I";
-                        keyboardList[i].status = "I";
+                        // keyboardList[i].status = "I";
+                        updateKeyboardList(g[i], "I")
                         const index = setWord.indexOf(g[i]);
                         setWord.splice(index, 1);
                     }

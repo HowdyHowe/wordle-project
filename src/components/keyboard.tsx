@@ -31,7 +31,7 @@ export default function Keyboard({ letterStatus, onKeyPress, onBackspace, onEnte
                         <button
                             key={letter}
                             className={`keyboard-key ${
-                                status === "O" ? "bg-[#2eb812] text-white" :
+                                status === "O" ? `bg-[#2eb812] text-white` :
                                 status === "I" ? "bg-[#dddd00] text-white" :
                                 status === "X" ? "bg-[#b6b6b6] text-white" :
                                 darkMode ? "bg-[#0e0e0e] active:bg-[#2c2c2c] lg:hover:bg-[#1f1f1f]"

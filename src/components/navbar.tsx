@@ -25,10 +25,10 @@ export default function Navbar() {
                     {
                         darkMode ?
                         <button onClick={() => dispatch(toggleTheme())}>
-                            <CiDark className={`w-[30px] h-[30px] p-[4px] rounded-md duration-200 ${darkMode ? "bg-[#0e0e0e] lg:hover:bg-[#1f1f1f]" : "bg-[#dfe2ff] lg:hover:bg-[#d8dbff]"}`}/>
+                            <CiLight className={`w-[30px] h-[30px] p-[5px] rounded-md duration-200 ${darkMode ? "bg-[#0e0e0e] lg:hover:bg-[#1f1f1f]" : "bg-[#dfe2ff] lg:hover:bg-[#d8dbff]"}`}/>
                         </button>:
                         <button onClick={() => dispatch(toggleTheme())}>
-                            <CiLight className={`w-[30px] h-[30px] p-[5px] rounded-md duration-200 ${darkMode ? "bg-[#0e0e0e] lg:hover:bg-[#1f1f1f]" : "bg-[#dfe2ff] lg:hover:bg-[#d8dbff]"}`}/>
+                            <CiDark className={`w-[30px] h-[30px] p-[4px] rounded-md duration-200 ${darkMode ? "bg-[#0e0e0e] lg:hover:bg-[#1f1f1f]" : "bg-[#dfe2ff] lg:hover:bg-[#d8dbff]"}`}/>
                         </button>
                     }
                 </div>
