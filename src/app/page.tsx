@@ -9,7 +9,8 @@ import randomWord from "@/components/data/word-idn.json"
 import { useDispatch, useSelector } from "react-redux";
 import SurrendPopUp from "@/components/surrend-pop-up";
 import { rootState } from "@/store";
-import { setSurrend } from "@/store/state";
+import { setInfo, setSurrend } from "@/store/state";
+import InfoPopUp from "@/components/info-pop-up";
 
 type LetterData = {
   letter: string;
@@ -217,12 +218,18 @@ export default function MainPage() {
 
     return (
         <main className={`main ${darkMode ? "bg-black text-white": "bg-white text-black"}`}>
+
+            <InfoPopUp
+                show={true}
+                onClose={() => dispatch(setInfo())}
+            />
+
             {
                 <SurrendPopUp
                     show={surrend}
                     onClose={() => dispatch(setSurrend())}
-                    title="Surrend?"
-                    message="Surrend"
+                    title="Apakah Anda Yakin?"
+                    message="Jika menyerah, anda tidak akan tahu apa kata rahasianya."
                     playAgain={() => {
                         dispatch(setSurrend())
                         resetGame()
