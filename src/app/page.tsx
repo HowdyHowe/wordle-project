@@ -35,6 +35,7 @@ const isValidWord = (guess: string) =>  {
 export default function MainPage() {
     const darkMode = useSelector((state: rootState) => state.stateData.darkMode);
     const maxWords = useSelector((state: rootState) => state.stateData.boxCount);
+    const info = useSelector((state: rootState) => state.stateData.info);
     const surrend = useSelector((state: rootState) => state.stateData.surrend);
     const dispatch = useDispatch();
 
@@ -220,7 +221,7 @@ export default function MainPage() {
         <main className={`main ${darkMode ? "bg-black text-white": "bg-white text-black"}`}>
 
             <InfoPopUp
-                show={true}
+                show={info}
                 onClose={() => dispatch(setInfo())}
             />
 

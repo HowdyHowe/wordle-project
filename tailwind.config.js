@@ -13,6 +13,8 @@ module.exports = {
     extend: {
       fontFamily: {
         rubik: ["Rubik"],
+        fredoka: ["Fredoka"],
+        fredokalight: ["Fredoka-Light"]
       },
       keyframes: {
         pop: {
