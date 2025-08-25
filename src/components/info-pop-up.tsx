@@ -1,6 +1,7 @@
 
 import { rootState } from "@/store";
-import { RxCross1 } from "react-icons/rx";
+import { BiChevronDown } from "react-icons/bi";
+import { RxChevronDown, RxCross1 } from "react-icons/rx";
 import { useSelector } from "react-redux";
 
 type InfoPopUpProps = {
@@ -19,7 +20,7 @@ export default function InfoPopUp({  show, onClose}: InfoPopUpProps) {
       <div className="fixed inset-0 w-full h-full bg-black opacity-60" />
 
       {/* Popup content */}
-      <div className={`relative flex flex-col items-center justify-center w-[300px] h-[450px] rounded-md z-20 px-4 ${darkMode ? "bg-[#2c2c2c]" : "bg-white"}`}>
+      <div className={`relative flex flex-col items-center justify-center w-[300px] h-[450px] rounded-md z-20 px-4 lg:w-[400px] ${darkMode ? "bg-[#2c2c2c]" : "bg-white"}`}>
         <div className="flex flex-col items-center justify-start text-center w-full h-full mt-10 mb-3 overflow-y-scroll">
             <h2 className="text-xl font-bold mb-4 bg-[#dfe2ff] w-full h-[50px] rounded-md">Cara Bermain Wordle</h2>
             <p className="text-lg">1. Tebak Kata</p>
@@ -33,7 +34,12 @@ export default function InfoPopUp({  show, onClose}: InfoPopUpProps) {
                 <div className="box-incorrect">A</div>
                 <div className="box-incorrect">K</div>
             </div>
-            <div className="flex items-start justify-start w-full">
+            <div className="flex items-center justify-evenly w-full">
+                <RxChevronDown size={30} color="#2c2c2c"/>
+                <RxChevronDown size={30} color="#2c2c2c" className="mx-8 lg:mx-[50px]"/>
+                <RxChevronDown size={30} color="#2c2c2c"/>
+            </div>
+            <div className="flex items-center justify-evenly w-full">
                 <p className="font-fredokalight mb-2 px-2 text-xs">Huruf yang benar, dan posisinya juga benar.</p>
                 <p className="font-fredokalight mb-2 px-2 text-xs">Huruf yang ada di kata, tapi posisi tidak benar.</p>
                 <p className="font-fredokalight mb-2 px-2 text-xs">Huruf yang tidak ada di kata sama sekali.</p>
