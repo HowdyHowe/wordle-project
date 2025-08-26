@@ -22,7 +22,7 @@ export default function SurrendPopUp({ title, message, show, onClose, playAgain 
       <div className="fixed inset-0 w-full h-full bg-black opacity-60" />
 
       {/* Popup content */}
-      <div className={`relative flex flex-col items-center justify-center w-[275px] h-[350px] rounded-md z-20 p-4 ${darkMode ? "bg-[#2c2c2c]" : "bg-white"}`}>
+      <div className={`relative flex flex-col items-center justify-center w-[300px] h-[450px] rounded-md z-20 p-4 lg:w-[400px] ${darkMode ? "bg-[#2c2c2c]" : "bg-white"}`}>
         <h2 className="text-xl font-bold mb-6">{title}</h2>
         <p className="mb-2 text-center text-md">{message}</p>
         <button onClick={playAgain} className="flex items-center justify-center w-[150px] h-[40px] text-black bg-[#c7c9ff] border border-[#2c2c2c] mt-10 text-md rounded-lg duration-200 lg:hover:bg-[#d8dbff]">Menyerah</button>

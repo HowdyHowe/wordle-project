@@ -200,6 +200,11 @@ export default function MainPage() {
             }
         }
     };
+    useEffect(() => {
+        if (maxWords) {
+            resetGame();
+        }
+    }, [maxWords]);
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
@@ -223,7 +228,10 @@ export default function MainPage() {
         <main className={`main ${darkMode ? "bg-black text-white": "bg-white text-black"}`}>
 
             <SettingPopUp
-                changeBox={resetGame}
+                changeBox={(num) => {
+                    dispatch(setBoxCount(num));
+                    resetGame();
+                }}
                 show={setting}
                 onClose={() => dispatch(setSetting())}
             />
@@ -277,7 +285,9 @@ export default function MainPage() {
 
             <div className="grid grid-rows-4 gap-[3px] mt-[85px] mb-9 font-bold lg:mt-[0px] lg:gap-[6px]">
                 <div className={`grid ${
-                        maxWords === 5
+                        maxWords === 4
+                        ? "grid-cols-4"
+                        : maxWords === 5
                         ? "grid-cols-5"
                         : maxWords === 6
                         ? "grid-cols-6"
@@ -301,7 +311,9 @@ export default function MainPage() {
                     }
                 </div>
                 <div className={`grid ${
-                        maxWords === 5
+                        maxWords === 4
+                        ? "grid-cols-4"
+                        : maxWords === 5
                         ? "grid-cols-5"
                         : maxWords === 6
                         ? "grid-cols-6"
@@ -326,7 +338,9 @@ export default function MainPage() {
                     }
                 </div>
                 <div className={`grid ${
-                        maxWords === 5
+                        maxWords === 4
+                        ? "grid-cols-4"
+                        : maxWords === 5
                         ? "grid-cols-5"
                         : maxWords === 6
                         ? "grid-cols-6"
@@ -350,7 +364,9 @@ export default function MainPage() {
                     }
                 </div>
                 <div className={`grid ${
-                        maxWords === 5
+                        maxWords === 4
+                        ? "grid-cols-4"
+                        : maxWords === 5
                         ? "grid-cols-5"
                         : maxWords === 6
                         ? "grid-cols-6"
@@ -374,7 +390,9 @@ export default function MainPage() {
                     }
                 </div>
                 <div className={`grid ${
-                        maxWords === 5
+                        maxWords === 4
+                        ? "grid-cols-4"
+                        : maxWords === 5
                         ? "grid-cols-5"
                         : maxWords === 6
                         ? "grid-cols-6"
@@ -398,7 +416,9 @@ export default function MainPage() {
                     }
                 </div>
                 <div className={`grid ${
-                        maxWords === 5
+                        maxWords === 4
+                        ? "grid-cols-4"
+                        : maxWords === 5
                         ? "grid-cols-5"
                         : maxWords === 6
                         ? "grid-cols-6"
