@@ -8,12 +8,11 @@
 //   // @apply bg-black text-black font-rubik;
 //   @apply font-rubik;
 // }
-html {
-  scrollbar-gutter: stable;
+// html {
   /* modern browsers */
   /* overflow-y: overlay; */
   /* alternative: floating scrollbar on Chromium */
-}
+// }
 
 .main {
   @apply relative flex flex-col items-center justify-start font-fredoka w-screen h-screen lg:pt-[150px];

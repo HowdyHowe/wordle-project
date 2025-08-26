@@ -1,6 +1,5 @@
 
 import { rootState } from "@/store";
-import { BiChevronDown } from "react-icons/bi";
 import { RxChevronDown, RxCross1 } from "react-icons/rx";
 import { useSelector } from "react-redux";
 

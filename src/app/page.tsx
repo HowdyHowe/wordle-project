@@ -9,7 +9,7 @@ import randomWord from "@/components/data/word-idn.json"
 import { useDispatch, useSelector } from "react-redux";
 import SurrendPopUp from "@/components/surrend-pop-up";
 import { rootState } from "@/store";
-import { setInfo, setSetting, setSurrend } from "@/store/state";
+import { setBoxCount, setInfo, setSetting, setSurrend } from "@/store/state";
 import InfoPopUp from "@/components/info-pop-up";
 import SettingPopUp from "@/components/setting-pop-up";
 
@@ -223,6 +223,7 @@ export default function MainPage() {
         <main className={`main ${darkMode ? "bg-black text-white": "bg-white text-black"}`}>
 
             <SettingPopUp
+                changeBox={resetGame}
                 show={setting}
                 onClose={() => dispatch(setSetting())}
             />
