@@ -8,6 +8,12 @@
 //   // @apply bg-black text-black font-rubik;
 //   @apply font-rubik;
 // }
+html {
+  scrollbar-gutter: stable;
+  /* modern browsers */
+  /* overflow-y: overlay; */
+  /* alternative: floating scrollbar on Chromium */
+}
 
 .main {
   @apply relative flex flex-col items-center justify-start font-fredoka w-screen h-screen lg:pt-[150px];
@@ -45,3 +51,14 @@
   @apply flex items-center justify-center h-[50px] text-sm rounded-[4px] active:scale-90 active:bg-[#c7c9ff] lg:rounded-md lg:text-xl lg:hover:bg-[#d8dbff] transition-all duration-75
 }
 
+.box-incorrect-dummy {
+  @apply flex items-center justify-center min-w-[45px] min-h-[45px] bg-[#b6b6b6] text-white text-lg rounded-md lg:w-[60px] lg:h-[60px] lg:text-2xl
+}
+
+.box-semi-correct-dummy {
+  @apply flex items-center justify-center min-w-[45px] min-h-[45px] bg-[#dddd00] text-white text-lg rounded-md lg:w-[60px] lg:h-[60px] lg:text-2xl
+}
+
+.box-correct-dummy {
+  @apply flex items-center justify-center min-w-[45px] min-h-[45px] bg-[#2eb812] text-white text-lg rounded-md lg:w-[60px] lg:h-[60px] lg:text-2xl
+}

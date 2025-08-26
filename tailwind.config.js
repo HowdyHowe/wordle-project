@@ -1,3 +1,5 @@
+import scrollbar from "tailwind-scrollbar";
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: "class",
@@ -14,7 +16,7 @@ module.exports = {
       fontFamily: {
         rubik: ["Rubik"],
         fredoka: ["Fredoka"],
-        fredokalight: ["Fredoka-Light"]
+        fredokalight: ["Fredoka-Light"],
       },
       keyframes: {
         pop: {
@@ -34,5 +36,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [scrollbar],
 };

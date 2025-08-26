@@ -1,10 +1,10 @@
 # Wordle Clone
 
-Proyek ini adalah permainan **Wordle sederhana** yang saya buat menggunakan **Next.js**, **SASS**, dan **Redux**.  
+Proyek ini adalah permainan **Wordle sederhana** yang saya buat menggunakan **Next.js**, **SASS**, dan **Redux**.
 Tujuan utamanya hanya untuk belajar bagaimana menggabungkan framework dan library tersebut dalam sebuah project kecil.
 
 ## 🎮 Cara Main
-1. Pemain harus menebak kata dengan 5 huruf.
+1. Pemain harus menebak kata rahasia.
 2. Ada maksimal 6 percobaan.
 3. Setelah menebak, huruf akan diberi warna sebagai petunjuk:
    - 🟩 Hijau → huruf benar dan posisi benar

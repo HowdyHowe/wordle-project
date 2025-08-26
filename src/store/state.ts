@@ -4,12 +4,14 @@ interface StateData {
     darkMode: boolean;
     surrend: boolean;
     info: boolean;
+    setting: boolean;
     boxCount: number;
 }
 
 const initialState: StateData = {
     darkMode: false,
     surrend: false,
+    setting: false,
     info: false,
     boxCount: 5
 }
@@ -27,6 +29,9 @@ const stateDataSlice = createSlice({
         setInfo: (state) => {
             state.info = !state.info
         },
+        setSetting: (state) => {
+            state.setting = !state.setting
+        },
         setBoxCount: (state, action: PayloadAction<number>) => {
             state.boxCount = action.payload;
         },
@@ -34,5 +39,5 @@ const stateDataSlice = createSlice({
 });
 
 
-export const { toggleTheme, setBoxCount, setSurrend, setInfo } = stateDataSlice.actions;
+export const { toggleTheme, setBoxCount, setSurrend, setInfo, setSetting } = stateDataSlice.actions;
 export default stateDataSlice.reducer;
