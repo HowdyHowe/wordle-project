@@ -45,7 +45,7 @@ export default function Keyboard({ letterStatus, onKeyPress, onBackspace, onEnte
                 </div>
 
             {/* Row 2 */}
-            <div className="grid grid-cols-9 w-[350px] mx-auto gap-1 lg:gap-2 lg:min-w-[750px]">
+            <div className="grid grid-cols-9 w-[95%] mx-auto gap-1 lg:gap-2 lg:min-w-[750px]">
                 {"ASDFGHJKL".split("").map((letter) => {
                     const found = letterStatus.find(l => l.letter === letter);
                     const status = found?.status || "";

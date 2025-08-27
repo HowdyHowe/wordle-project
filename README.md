@@ -1,37 +1,37 @@
 # Wordle Clone
 
-Proyek ini adalah permainan **Wordle sederhana** yang saya buat menggunakan **Next.js**, **SASS**, dan **Redux**.
-Tujuan utamanya hanya untuk belajar bagaimana menggabungkan framework dan library tersebut dalam sebuah project kecil.
+This project is a **simple Wordle game** that I built using **Next.js**, **SASS**, and **Redux**.  
+The main purpose is just to learn how to combine these frameworks and libraries in a small project.
 
-## 🎮 Cara Main
-1. Pemain harus menebak kata rahasia.
-2. Ada maksimal 6 percobaan.
-3. Setelah menebak, huruf akan diberi warna sebagai petunjuk:
-   - 🟩 Hijau → huruf benar dan posisi benar
-   - 🟨 Kuning → huruf ada di kata tapi posisi salah
-   - ⬜ Abu-abu → huruf tidak ada di kata
-4. Jika berhasil menebak kata dengan benar dalam 6 percobaan → menang.
-5. Jika gagal, kata jawaban akan ditampilkan.
+## 🎮 How to Play
+1. The player must guess the secret word.
+2. There are a maximum of 6 attempts.
+3. After each guess, the letters will be colored as hints:
+   - 🟩 Green → correct letter in the correct position
+   - 🟨 Yellow → correct letter but in the wrong position
+   - ⬜ Gray → letter is not in the word
+4. If you guess the word correctly within 6 attempts → you win.
+5. If you fail, the correct word will be revealed.
 
-## 🛠️ Teknologi yang Digunakan
-- Next.js → untuk framework React
-- SASS → untuk styling
-- Redux → untuk state management
+## 🛠️ Technologies Used
+- Next.js → React framework
+- SASS → styling
+- Redux → state management
 
-## 🚀 Menjalankan Project
-1. Clone repository ini:
+## 🚀 Running the Project
+1. Clone this repository:
    git clone https://github.com/username/wordle-clone.git
 
-2. Masuk ke folder project:
+2. Navigate into the project folder:
    cd wordle-clone
 
 3. Install dependencies:
    npm install
 
-4. Jalankan development server:
+4. Run the development server:
    npm run dev
 
-5. Buka di browser: http://localhost:3000
+5. Open in your browser: http://localhost:3000
 
-## 📌 Catatan
-- Project ini hanya untuk belajar, jadi masih banyak hal yang bisa dikembangkan.
+## 📌 Notes
+- This project is only for learning purposes, so there is still a lot that can be improved.
