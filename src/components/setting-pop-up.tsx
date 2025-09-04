@@ -1,8 +1,7 @@
 
 import { rootState } from "@/store";
-import { setBoxCount } from "@/store/state";
 import { RxCross1 } from "react-icons/rx";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 type SettingPopUpProps = {
   show: boolean;
@@ -13,7 +12,6 @@ type SettingPopUpProps = {
 export default function SettingPopUp({ show, onClose, changeBox }: SettingPopUpProps) {
   const darkMode = useSelector((state: rootState) => state.stateData.darkMode);
   const box = useSelector((state: rootState) => state.stateData.boxCount);
-  const dispatch = useDispatch();
 
   if (!show) return null;
 

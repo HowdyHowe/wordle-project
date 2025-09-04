@@ -4,7 +4,7 @@ import "@/styles/globals.scss"
 import "@/styles/font-face.scss"
 
 export const metadata: Metadata = {
-  title: "toba.dev",
+  title: "wordle-toba",
   description: "Toba's Wordle game project.",
 };
 
