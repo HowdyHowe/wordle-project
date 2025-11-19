@@ -186,7 +186,9 @@ export default function MainPage() {
             // checking if all word is right
             if (data[turn].every(item => item.status === "O")) {
                 setTurn(0)
-                setWin("win")
+                setTimeout(() => {
+                    setWin("win")
+                }, 700);
                 setShow(true)
                 return;
             }
@@ -194,7 +196,9 @@ export default function MainPage() {
             // checking if player having none chances
             if (nextTurn > 6) {
                 setTurn(0)
-                setWin("lose")
+                setTimeout(() => {
+                    setWin("lose")
+                }, 700);
                 setShow(true)
                 return;
             }
